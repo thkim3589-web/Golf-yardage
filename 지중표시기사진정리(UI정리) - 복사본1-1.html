@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ko">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #f4f6f9; display: flex; justify-content: center; padding: 20px; }
+        .app-container { width: 100%; max-width: 400px; background: #ffffff; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        /* 헤더 */
+        .header { background: #003399; color: white; padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        
+        /* 현장 정보 */
+        .site-info { background: #eef2f8; padding: 12px; border-radius: 10px; border: 1px solid #d1d9e6; margin-bottom: 15px; }
+        
+        /* 자재 관리 */
+        .material-box { border: 1px solid #d1d9e6; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .material-row { display: flex; gap: 10px; margin-bottom: 8px; font-weight: bold; }
+        
+        /* 버튼 그리드 */
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .btn { padding: 12px; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .bg-blue { background: #0056b3; }
+        .bg-green { background: #28a745; }
+        .bg-purple { background: #6f42c1; }
+        .bg-gray { background: #6c757d; }
+        .bg-red { background: #dc3545; }
+        
+        /* 갤러리 */
+        .gallery-title { margin-top: 20px; font-weight: bold; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+        .photo-card { border: 1px solid #ddd; border-radius: 8px; padding: 5px; text-align: center; font-size: 11px; }
+    </style>
+</head>
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const manager=document.getElementById("managerName");
+const manage=document.getElementById("manageNo");
+const current=document.getElementById("currentManageNo");
+
+manager.value=localStorage.getItem("managerName")||manager.value;
+manage.value=localStorage.getItem("manageNo")||manage.value;
+
+function save(){
+
+localStorage.setItem("managerName",manager.value);
+
+localStorage.setItem("manageNo",manage.value);
+
+current.innerHTML=
+
+manage.value.trim()
+
+?
+
+"현재 관리번호 : "+manage.value
+
+:
+
+"현재 관리번호 : 미입력";
+
+}
+
+manager.addEventListener("input",save);
+
+manage.addEventListener("input",save);
+
+save();
+
+});
+
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const manage=document.getElementById("manageNo");
+
+const buttons=document.querySelectorAll(".btn");
+
+function update(){
+
+const ok=manage.value.trim()!="";
+
+buttons.forEach(btn=>{
+
+btn.disabled=!ok;
+
+btn.style.opacity=ok?"1":"0.5";
+
+});
+
+}
+
+manage.addEventListener("input",update);
+
+update();
+
+});
+
+</script>
+
+<script>
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const excelBtn=document.getElementById("excelSaveBtn");
+
+    if(!excelBtn) return;
+
+    excelBtn.addEventListener("click",()=>{
+
+        const manageNo=document.getElementById("manageNo").value.trim();
+        const manager=document.getElementById("managerName").value.trim();
+
+        if(!manageNo){
+            alert("관리번호를 입력하세요.");
+            return;
+        }
+
+        if(!manager){
+            alert("관리자명을 입력하세요.");
+            document.getElementById("managerName").focus();
+            return;
+        }
+
+        const cards=document.querySelectorAll("#galleryGrid .photo-card");
+
+        if(cards.length===0){
+            alert("저장할 사진이 없습니다.");
+            return;
+        }
+
+        const rows=[
+            ["관리번호","관리자","사진명"]
+        ];
+
+        cards.forEach(card=>{
+
+            const text=card.textContent.trim().split("\n");
+
+            rows.push([
+                manageNo,
+                manager,
+                text[1]||text[0]
+            ]);
+
+        });
+
+        const wb=XLSX.utils.book_new();
+        const ws=XLSX.utils.aoa_to_sheet(rows);
+
+        XLSX.utils.book_append_sheet(
+            wb,
+            ws,
+            "사진목록"
+        );
+
+        XLSX.writeFile(
+            wb,
+            `${manageNo}_사진관리.xlsx`
+        );
+
+    });
+
+});</script>
+
+
+
+
+
+
+<body>
+
+<div class="app-container">
+    <div class="header">
+        <strong>현장 사진 관리</strong>
+        <span>
+👤 관리자 :
+<input
+type="text"
+id="managerName"
+value="이영희"
+style="
+width:120px;
+font-size:1em;
+font-weight:700;
+border:none;
+background:transparent;
+color:white;
+border-bottom:1px solid rgba(255,255,255,.6);
+outline:none;">
+</span>
+    </div>
+
+    <div class="site-info">
+        
+<input
+id="manageNo"
+type="text"
+placeholder="관리번호 입력"
+style="
+font-size:1em;
+font-weight:700;
+padding:6px 8px;
+border:2px solid #d32f2f;
+border-radius:6px;">
+
+<span style="color:red;">*</span>
+
+<div
+id="currentManageNo"
+style="
+margin-top:8px;
+font-weight:800;
+color:#003399;">
+현재 관리번호 : 미입력
+</div>
+    </div>
+    <div
+id="photoCount"
+style="margin-bottom:15px;font-weight:bold;">
+🖼️ 총 사진 : 0장 / 신규 : 0장
+</div>
+
+    <div class="material-box">
+        <div style="margin-bottom: 10px; font-weight: bold;">자재 수량 관리</div>
+        <div class="material-row">기설합: [0] 🔨 못: [0] 🟠 스티커: [0]</div>
+        <div class="material-row">신설합: [0] 🔧 못: [0] ⚪ 스티커: [0] 🥫 락카: [0]</div>
+    </div>
+
+    <div class="btn-grid">
+        <button
+class="btn bg-blue"
+id="cameraBtn">
+📸 촬영
+</button>
+        <button
+class="btn bg-blue"
+id="galleryBtn">
+🖼️ 갤러리
+</button>
+        <button class="btn bg-green" id="excelSaveBtn">📊 엑셀 저장</button>
+        <button class="btn bg-purple">📁 ZIP 압축</button>
+        <button class="btn bg-gray">💾 데이터 백업</button>
+        <button class="btn bg-gray">🔄 데이터 복원</button>
+        <button class="btn bg-red">🗑️ 개별 삭제</button>
+        <button class="btn bg-red">🚨 전체 삭제</button>
+    </div>
+
+    <div class="gallery-title">갤러리</div>
+    <div class="gallery-grid" id="galleryGrid">
+        <div class="photo-card">001<br>site_001.jpg<br>2024.05.20</div>
+        <div class="photo-card">002<br>site_002.jpg<br>2024.05.20</div>
+        <div class="photo-card">003<br>site_003.jpg<br>2024.05.20</div>
+    </div>
+</div>
+
+
+
+<input
+type="file"
+id="cameraInput"
+accept="image/*"
+capture="environment"
+style="display:none;">
+
+<input
+type="file"
+id="galleryInput"
+accept="image/*"
+multiple
+style="display:none;">
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const gallery=document.getElementById("galleryGrid");
+
+const count=document.getElementById("photoCount");
+
+const cameraBtn=document.getElementById("cameraBtn");
+
+const galleryBtn=document.getElementById("galleryBtn");
+
+const camera=document.getElementById("cameraInput");
+
+const galleryInput=document.getElementById("galleryInput");
+
+let newPhotoCount=0;
+
+cameraBtn.onclick=()=>camera.click();
+
+galleryBtn.onclick=()=>galleryInput.click();
+
+camera.onchange=()=>{
+
+[...camera.files].forEach(addPhoto);
+
+camera.value="";
+
+};
+
+galleryInput.onchange=()=>{
+
+[...galleryInput.files].forEach(addPhoto);
+
+galleryInput.value="";
+
+};
+
+function addPhoto(file){
+
+newPhotoCount++;
+
+const total=gallery.children.length+1;
+
+const card=document.createElement("div");
+
+card.className="photo-card";
+
+const img=document.createElement("img");
+
+img.src=URL.createObjectURL(file);
+
+img.style.width="100%";
+
+img.style.borderRadius="6px";
+
+card.appendChild(img);
+
+card.appendChild(document.createElement("br"));
+
+card.append(("000"+total).slice(-3));
+
+card.appendChild(document.createElement("br"));
+
+card.append(file.name);
+
+gallery.prepend(card);
+
+updateCount();
+
+}
+
+function updateCount(){
+
+count.innerHTML=
+
+`🖼️ 총 사진 : ${gallery.children.length}장 / 신규 : ${newPhotoCount}장`;
+
+}
+
+updateCount();
+
+});
+
+</script>
+
+<!DOCTYPE html>
+<html lang="ko">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #f4f6f9; display: flex; justify-content: center; padding: 20px; }
+        .app-container { width: 100%; max-width: 400px; background: #ffffff; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        /* 헤더 */
+        .header { background: #003399; color: white; padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        
+        /* 현장 정보 */
+        .site-info { background: #eef2f8; padding: 12px; border-radius: 10px; border: 1px solid #d1d9e6; margin-bottom: 15px; }
+        
+        /* 자재 관리 */
+        .material-box { border: 1px solid #d1d9e6; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .material-row { display: flex; gap: 10px; margin-bottom: 8px; font-weight: bold; }
+        
+        /* 버튼 그리드 */
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .btn { padding: 12px; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .bg-blue { background: #0056b3; }
+        .bg-green { background: #28a745; }
+        .bg-purple { background: #6f42c1; }
+        .bg-gray { background: #6c757d; }
+        .bg-red { background: #dc3545; }
+        
+        /* 갤러리 */
+        .gallery-title { margin-top: 20px; font-weight: bold; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+        .photo-card { border: 1px solid #ddd; border-radius: 8px; padding: 5px; text-align: center; font-size: 11px; }
+    </style>
+</head>
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const manager=document.getElementById("managerName");
+const manage=document.getElementById("manageNo");
+const current=document.getElementById("currentManageNo");
+
+manager.value=localStorage.getItem("managerName")||manager.value;
+manage.value=localStorage.getItem("manageNo")||manage.value;
+
+function save(){
+
+localStorage.setItem("managerName",manager.value);
+
+localStorage.setItem("manageNo",manage.value);
+
+current.innerHTML=
+
+manage.value.trim()
+
+?
+
+"현재 관리번호 : "+manage.value
+
+:
+
+"현재 관리번호 : 미입력";
+
+}
+
+manager.addEventListener("input",save);
+
+manage.addEventListener("input",save);
+
+save();
+
+});
+
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const manage=document.getElementById("manageNo");
+
+const buttons=document.querySelectorAll(".btn");
+
+function update(){
+
+const ok=manage.value.trim()!="";
+
+buttons.forEach(btn=>{
+
+btn.disabled=!ok;
+
+btn.style.opacity=ok?"1":"0.5";
+
+});
+
+}
+
+manage.addEventListener("input",update);
+
+update();
+
+});
+
+</script>
+
+<script>
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const excelBtn=document.getElementById("excelSaveBtn");
+
+    if(!excelBtn) return;
+
+    excelBtn.addEventListener("click",()=>{
+
+        const manageNo=document.getElementById("manageNo").value.trim();
+        const manager=document.getElementById("managerName").value.trim();
+
+        if(!manageNo){
+            alert("관리번호를 입력하세요.");
+            return;
+        }
+
+        if(!manager){
+            alert("관리자명을 입력하세요.");
+            document.getElementById("managerName").focus();
+            return;
+        }
+
+        const cards=document.querySelectorAll("#galleryGrid .photo-card");
+
+        if(cards.length===0){
+            alert("저장할 사진이 없습니다.");
+            return;
+        }
+
+        const rows=[
+            ["관리번호","관리자","사진명"]
+        ];
+
+        cards.forEach(card=>{
+
+            const text=card.textContent.trim().split("\n");
+
+            rows.push([
+                manageNo,
+                manager,
+                text[1]||text[0]
+            ]);
+
+        });
+
+        const wb=XLSX.utils.book_new();
+        const ws=XLSX.utils.aoa_to_sheet(rows);
+
+        XLSX.utils.book_append_sheet(
+            wb,
+            ws,
+            "사진목록"
+        );
+
+        XLSX.writeFile(
+            wb,
+            `${manageNo}_사진관리.xlsx`
+        );
+
+    });
+
+});</script>
+
+
+
+
+
+
+<body>
+
+<div class="app-container">
+    <div class="header">
+        <strong>현장 사진 관리</strong>
+        <span>
+👤 관리자 :
+<input
+type="text"
+id="managerName"
+value="이영희"
+style="
+width:120px;
+font-size:1em;
+font-weight:700;
+border:none;
+background:transparent;
+color:white;
+border-bottom:1px solid rgba(255,255,255,.6);
+outline:none;">
+</span>
+    </div>
+
+    <div class="site-info">
+        
+<input
+id="manageNo"
+type="text"
+placeholder="관리번호 입력"
+style="
+font-size:1em;
+font-weight:700;
+padding:6px 8px;
+border:2px solid #d32f2f;
+border-radius:6px;">
+
+<span style="color:red;">*</span>
+
+<div
+id="currentManageNo"
+style="
+margin-top:8px;
+font-weight:800;
+color:#003399;">
+현재 관리번호 : 미입력
+</div>
+    </div>
+    <div
+id="photoCount"
+style="margin-bottom:15px;font-weight:bold;">
+🖼️ 총 사진 : 0장 / 신규 : 0장
+</div>
+
+    <div class="material-box">
+        <div style="margin-bottom: 10px; font-weight: bold;">자재 수량 관리</div>
+        <div class="material-row">기설합: [0] 🔨 못: [0] 🟠 스티커: [0]</div>
+        <div class="material-row">신설합: [0] 🔧 못: [0] ⚪ 스티커: [0] 🥫 락카: [0]</div>
+    </div>
+
+    <div class="btn-grid">
+        <button
+class="btn bg-blue"
+id="cameraBtn">
+📸 촬영
+</button>
+        <button
+class="btn bg-blue"
+id="galleryBtn">
+🖼️ 갤러리
+</button>
+        <button class="btn bg-green" id="excelSaveBtn">📊 엑셀 저장</button>
+        <button class="btn bg-purple">📁 ZIP 압축</button>
+        <button class="btn bg-gray">💾 데이터 백업</button>
+        <button class="btn bg-gray">🔄 데이터 복원</button>
+        <button class="btn bg-red">🗑️ 개별 삭제</button>
+        <button class="btn bg-red">🚨 전체 삭제</button>
+    </div>
+
+    <div class="gallery-title">갤러리</div>
+    <div class="gallery-grid" id="galleryGrid">
+        <div class="photo-card">001<br>site_001.jpg<br>2024.05.20</div>
+        <div class="photo-card">002<br>site_002.jpg<br>2024.05.20</div>
+        <div class="photo-card">003<br>site_003.jpg<br>2024.05.20</div>
+    </div>
+</div>
+
+
+
+<input
+type="file"
+id="cameraInput"
+accept="image/*"
+capture="environment"
+style="display:none;">
+
+<input
+type="file"
+id="galleryInput"
+accept="image/*"
+multiple
+style="display:none;">
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const gallery=document.getElementById("galleryGrid");
+
+const count=document.getElementById("photoCount");
+
+const cameraBtn=document.getElementById("cameraBtn");
+
+const galleryBtn=document.getElementById("galleryBtn");
+
+const camera=document.getElementById("cameraInput");
+
+const galleryInput=document.getElementById("galleryInput");
+
+let newPhotoCount=0;
+
+cameraBtn.onclick=()=>camera.click();
+
+galleryBtn.onclick=()=>galleryInput.click();
+
+camera.onchange=()=>{
+
+[...camera.files].forEach(addPhoto);
+
+camera.value="";
+
+};
+
+galleryInput.onchange=()=>{
+
+[...galleryInput.files].forEach(addPhoto);
+
+galleryInput.value="";
+
+};
+
+function addPhoto(file){
+
+newPhotoCount++;
+
+const total=gallery.children.length+1;
+
+const card=document.createElement("div");
+
+card.className="photo-card";
+
+const img=document.createElement("img");
+
+img.src=URL.createObjectURL(file);
+
+img.style.width="100%";
+
+img.style.borderRadius="6px";
+
+card.appendChild(img);
+
+card.appendChild(document.createElement("br"));
+
+card.append(("000"+total).slice(-3));
+
+card.appendChild(document.createElement("br"));
+
+card.append(file.name);
+
+gallery.prepend(card);
+
+updateCount();
+
+}
+
+function updateCount(){
+
+count.innerHTML=
+
+`🖼️ 총 사진 : ${gallery.children.length}장 / 신규 : ${newPhotoCount}장`;
+
+}
+
+updateCount();
+
+});
+
+const today = new Date().toLocaleDateString("ko-KR");
+card.appendChild(document.createElement("br"));
+card.append(today);
+
+img.onload = () => URL.revokeObjectURL(img.src);
+
+
+const total = gallery.children.length + 1;
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

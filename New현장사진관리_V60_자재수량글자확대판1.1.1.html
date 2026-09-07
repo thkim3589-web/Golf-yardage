@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
+body { font-family: 'Pretendard', sans-serif; background-color: #f4f6f9; display:block; padding:0; }
+
+.app-container{
+width:100%;
+max-width:100vw;
+min-height:100vh;
+margin:0 auto;
+background:#ffffff;
+padding:12px;
+border-radius:0;
+box-shadow:none;
+}
+.header { background: #003399; color: white; padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.site-info { background: #eef2f8; padding: 12px; border-radius: 10px; border: 1px solid #d1d9e6; margin-bottom: 15px; }
+.material-box { border: 1px solid #d1d9e6; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+.material-row { display: flex; gap: 10px; margin-bottom: 8px; font-weight: bold; }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.btn { padding: 12px; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.bg-blue { background: #0056b3; }
+.bg-green { background: #28a745; }
+.bg-purple { background: #6f42c1; }
+.bg-gray { background: #6c757d; }
+.bg-red { background: #dc3545; }
+.gallery-title { margin-top: 20px; font-weight: bold; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.photo-card { border: 1px solid #ddd; border-radius: 8px; padding: 5px; text-align: center; font-size: 11px; }
+
+@media (max-width:600px){
+.btn{min-height:52px;font-size:15px;}
+.material-row{font-size:14px;flex-wrap:wrap;}
+.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+img{max-width:100%;height:auto;}
+}
+
+html{font-size:20px;}
+body{
+line-height:1.5;
+color:#222;
+}
+.header{padding:16px 18px;font-size:1.4rem;}
+.header strong{font-size:1.5rem;}
+.site-info{font-size:1.25rem;padding:14px;}
+.material-box{padding:16px;}
+.material-box>div:first-child{font-size:1.35rem;}
+.material-row{font-size:1.23rem;line-height:1.6;}
+.btn{
+font-size:1.25rem;
+font-weight:700;
+padding:14px;
+border-radius:10px;
+}
+.gallery-title{
+font-size:1.4rem;
+margin-top:22px;
+}
+.photo-card{
+font-size:1.1rem;
+line-height:1.4;
+padding:8px;
+}
+@media(max-width:480px){
+html{font-size:21px;}
+.header strong{font-size:1.45rem;}
+.btn{font-size:1.2rem;min-height:56px;}
+.photo-card{font-size:1.05rem;}
+}
+
+
+.photo-card{position:relative;overflow:hidden}
+.photo-no{position:absolute;left:6px;top:6px;background:#fff;padding:2px 6px;border-radius:6px;font-weight:700;z-index:5}
+.photo-del{position:absolute;right:6px;top:6px;width:24px;height:24px;border:none;border-radius:50%;background:#ddd;color:#a00;font-weight:700;cursor:pointer;z-index:6}
+
+</style>
+
+<style id="font-match">
+body{
+font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;
+font-weight:600;
+letter-spacing:-0.02em;
+}
+.header strong{font-size:2rem;font-weight:800;}
+.header span{font-size:1.2rem;font-weight:700;}
+.site-info{font-size:1.35rem;font-weight:700;}
+.material-box>div:first-child{font-size:1.7rem;font-weight:800;}
+.material-row{font-size:1.3rem;font-weight:700;}
+.btn{font-size:1.35rem;font-weight:800;}
+.gallery-title{font-size:1.8rem;font-weight:800;}
+.photo-card{font-size:1.1rem;font-weight:700;}
+</style>
+
+
+<style>
+.fab-camera{
+position:fixed;
+right:20px;
+bottom:24px;
+width:64px;
+height:64px;
+border-radius:50%;
+border:none;
+background:#0d47a1;
+color:#fff;
+font-size:30px;
+box-shadow:0 6px 16px rgba(0,0,0,.35);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+cursor:pointer;
+}
+.fab-camera:active{transform:scale(.95);}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<style id="v60-material-font">
+.material-row input[type=number]{
+font-size:1.8rem!important;
+font-weight:800!important;
+text-align:center;
+height:58px;
+}
+.material-row{font-size:1.45rem!important;}
+#gisTotal,#sinTotal{
+font-size:1.8rem!important;
+font-weight:900!important;
+color:#003399;
+}
+</style>
+
+</head>
+<body>
+<div class="app-container">
+<div class="header"><strong>현장 사진 관리</strong><span>👤 관리자: <input type="text" id="managerName" value="이영희" style="width:110px;font-size:1em;font-weight:700;border:none;background:transparent;color:white;border-bottom:1px solid rgba(255,255,255,.6);outline:none;"></span></div>
+<div class="site-info">📍 관리번호 : <input id="manageNo" type="text" placeholder="관리번호를 입력하세요(필수)" style="font-size:1em;font-weight:700;padding:6px 8px;border:2px solid #d32f2f;border-radius:6px;"> <span style="color:#d32f2f;font-weight:800;">*</span></div>
+<div style="margin-bottom:15px; font-weight: bold;"><span id="photoCounter">🖼️ 총 사진: 3장 / 신규: [0장]</span></div>
+<div class="material-box">
+<div style="margin-bottom:10px;font-weight:bold;">자재 수량 관리</div>
+<div class="material-row">기설합: <input id="gisTotal" type="number" value="0" readonly style="width:60px;background:#eef;"> 🔨 못: <input type="number" class="mat" value="0" min="0" style="width:60px;"> 🟠 스티커: <input type="number" class="mat" value="0" min="0" style="width:60px;"></div>
+<div class="material-row">신설합: <input id="sinTotal" type="number" value="0" readonly style="width:60px;background:#eef;"> 🔧 못: <input type="number" class="mat" value="0" min="0" style="width:60px;"> ⚪ 스티커: <input type="number" class="mat" value="0" min="0" style="width:60px;"> ➖ 횡단: <input type="number" class="mat" value="0" min="0" style="width:60px;"> 🥫 락카: <input type="number" class="mat" value="0" min="0" style="width:60px;"></div>
+</div>
+<div class="btn-grid">
+<button class="btn bg-blue">📸 촬영</button><button class="btn bg-blue" id="galleryBtn">🖼️ 갤러리</button>
+<button class="btn bg-green">📊 엑셀 저장</button><button class="btn bg-purple">📁 ZIP 압축</button>
+<button class="btn bg-gray">💾 데이터 백업</button><button class="btn bg-gray">🔄 데이터 복원</button>
+<button class="btn bg-red">🗑️ 개별 삭제</button><button class="btn bg-red">🚨 전체 삭제</button>
+</div>
+<div style="margin:8px 0;"><button id="undoDeleteBtn" class="btn bg-gray" style="padding:8px 14px;display:none;">↩ 삭제 취소</button></div>
+<div style="margin:8px 0;display:flex;gap:8px;flex-wrap:wrap;"><button id="selectAllBtn" class="btn bg-blue" style="padding:8px 12px;">전체선택</button><button id="deleteSelectedBtn" class="btn bg-red" style="padding:8px 12px;">선택삭제</button></div><div class="gallery-title">갤러리</div>
+<div class="gallery-grid">
+<div class="photo-card">001<br>site_001.jpg<br>2024.05.20</div>
+<div class="photo-card">002<br>site_002.jpg<br>2024.05.20</div>
+<div class="photo-card">003<br>site_003.jpg<br>2024.05.20</div>
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const el=document.getElementById("managerName");
+ if(!el) return;
+ const key="managerName";
+ const saved=localStorage.getItem(key);
+ if(saved) el.value=saved;
+ el.addEventListener("input",()=>localStorage.setItem(key,el.value));
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const m=document.getElementById("manageNo");
+ if(m){
+   const key="manageNo";
+   const saved=localStorage.getItem(key);
+   if(saved)m.value=saved;
+   m.addEventListener("input",()=>localStorage.setItem(key,m.value.trim()));
+ }
+
+ function requireManageNo(e){
+   const v=m?m.value.trim():"";
+   if(!v){
+      alert("관리번호는 필수 입력입니다.");
+      if(e)e.preventDefault();
+      m.focus();
+      return false;
+   }
+   return true;
+ }
+
+ document.querySelectorAll("button").forEach(btn=>{
+   btn.addEventListener("click",requireManageNo,true);
+ });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const manageNo = document.getElementById("manageNo");
+  if (!manageNo) return;
+
+  // Enter 키로 다음 입력 이동
+  manageNo.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const next = document.getElementById("managerName");
+      if (next) next.focus();
+    }
+  });
+
+  // 관리번호 표시를 실시간 반영
+  const title = document.createElement("div");
+  title.id = "currentManageNo";
+  title.style.cssText = "margin:10px 0;font-size:1.1em;font-weight:800;color:#003399;";
+  manageNo.parentNode.appendChild(title);
+
+  function updateLabel(){
+    title.textContent = manageNo.value.trim()
+      ? "현재 관리번호 : " + manageNo.value.trim()
+      : "현재 관리번호 : 미입력";
+  }
+  manageNo.addEventListener("input", updateLabel);
+  updateLabel();
+
+  // 관리번호 형식(영문/숫자/-/_)
+  manageNo.pattern = "[A-Za-z0-9_-]+";
+  manageNo.title = "영문, 숫자, -, _ 만 입력 가능합니다.";
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const manageNo=document.getElementById("manageNo");
+  const buttons=document.querySelectorAll("button");
+  function updateState(){
+    const ok=manageNo && manageNo.value.trim().length>0;
+    buttons.forEach(b=>{
+      b.disabled=!ok;
+      b.style.opacity=ok?"1":"0.5";
+      b.style.cursor=ok?"pointer":"not-allowed";
+    });
+  }
+  if(manageNo){
+    manageNo.addEventListener("input",updateState);
+    updateState();
+  }
+  buttons.forEach(btn=>{
+    btn.addEventListener("click",e=>{
+      if(btn.disabled){
+        e.preventDefault();
+        alert("관리번호를 먼저 입력하세요.");
+      }
+    });
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const manageNo=document.getElementById("manageNo");
+ const manager=document.getElementById("managerName");
+
+ const actions={
+  "📸 촬영":"카메라 기능 준비 완료",
+  
+  "📊 엑셀 저장":"엑셀 파일 생성 완료",
+  "📁 ZIP 압축":"ZIP 생성 준비 완료",
+  "💾 데이터 백업":"백업 준비 완료",
+  "🔄 데이터 복원":"복원 준비 완료",
+  "🗑️ 개별 삭제":"개별 삭제 준비 완료",
+  "🚨 전체 삭제":"전체 삭제 준비 완료"
+ };
+
+ document.querySelectorAll("button").forEach(btn=>{
+   btn.onclick=(e)=>{
+     e.preventDefault();
+     if(!manageNo.value.trim()){
+        alert("관리번호를 입력하세요.");
+        manageNo.focus();
+        return;
+     }
+     if(manager && !manager.value.trim()){
+        alert("관리자명을 입력하세요.");
+        manager.focus();
+        return;
+     }
+     const msg=actions[btn.textContent.trim()]||"기능 준비 완료";
+     // alert 제거
+      console.log(msg);
+   };
+ });
+});
+</script>
+
+<button class="fab-camera" id="fabCamera" title="사진 촬영">📷</button>
+
+<input type="file" id="fabCameraInput" accept="image/*" capture="environment" style="display:none;">
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const fab=document.getElementById("fabCamera");
+  const input=document.getElementById("fabCameraInput");
+  fab.addEventListener("click",()=>{
+    const no=document.getElementById("manageNo");
+    if(no && !no.value.trim()){
+      alert("관리번호를 먼저 입력하세요.");
+      no.focus();
+      return;
+    }
+    input.click();
+  });
+  input.addEventListener("change",()=>{
+    if(input.files.length){
+      const grid=document.querySelector(".gallery-grid");
+      [...input.files].forEach((file)=>{
+        const card=document.createElement("div");
+        card.className="photo-card";
+        const img=document.createElement("img");
+        img.style.width="100%";
+        img.style.borderRadius="6px";
+        img.src=URL.createObjectURL(file);
+        card.appendChild(img);
+        card.appendChild(document.createElement("br"));
+        card.append(file.name);
+        grid.prepend(card);
+      });
+    }
+  });
+});
+</script>
+
+
+<input type="file" id="galleryInput" accept="image/*" multiple style="display:none;">
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const gbtn=document.getElementById("galleryBtn");
+ const gin=document.getElementById("galleryInput");
+ const grid=document.querySelector(".gallery-grid");
+ if(gbtn){gbtn.onclick=(e)=>{e.preventDefault();gin.click();};}
+ gin.addEventListener("change",()=>{
+  [...gin.files].forEach(file=>{
+   const c=document.createElement("div");c.className="photo-card";
+   const i=document.createElement("img");i.src=URL.createObjectURL(file);i.style.width="100%";i.style.borderRadius="6px";
+   c.appendChild(i);c.appendChild(document.createElement("br"));c.append(file.name);grid.prepend(c);
+  });
+ });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const btn=[...document.querySelectorAll("button")].find(b=>b.textContent.includes("엑셀 저장"));
+ if(!btn) return;
+ btn.onclick=(e)=>{
+  e.preventDefault();
+  const no=document.getElementById("manageNo").value.trim();
+  const mgr=document.getElementById("managerName").value.trim();
+  if(!no){alert("관리번호를 입력하세요.");return;}
+  const mats=[...document.querySelectorAll(".mat")].map(i=>i.value||0);
+  const rows=[["관리번호","관리자","기설합","기설못","기설스티커","신설합","신설못","신설스티커","락카","사진명"]];
+  document.querySelectorAll(".gallery-grid .photo-card").forEach(c=>{
+    const t=c.textContent.trim().split("\n");
+    rows.push([no,mgr,mats[0],mats[1],mats[2],mats[3],mats[4],mats[5],mats[6],t[1]||t[0]||""]);
+  });
+  const wb=XLSX.utils.book_new();
+  const ws=XLSX.utils.aoa_to_sheet(rows);
+  XLSX.utils.book_append_sheet(wb,ws,"사진목록");
+  XLSX.writeFile(wb,`${no}_사진관리.xlsx`);
+ };
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const manage=document.getElementById("manageNo");
+ const inputs=[...document.querySelectorAll(".mat")];
+ function key(){return "materialQty_"+(manage.value.trim()||"_blank");}
+ function load(){
+   const saved=JSON.parse(localStorage.getItem(key())||"[]");
+   inputs.forEach((i,n)=>i.value=(saved[n]??0));
+ }
+ function save(){
+   localStorage.setItem(key(),JSON.stringify(inputs.map(i=>i.value||0)));
+ }
+ manage.addEventListener("change",load);
+ manage.addEventListener("input",()=>{ if(manage.value.trim()) load();});
+ inputs.forEach(i=>i.addEventListener("input",save));
+ load();
+});
+</script>
+
+
+<!-- V52 기능 추가 -->
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const mats=[...document.querySelectorAll(".mat")];
+  const box=document.querySelector(".material-box");
+  if(box){
+    const total=document.createElement("div");
+    total.id="materialTotal";
+    total.style.cssText="margin-top:10px;font-weight:bold;color:#003399";
+    box.appendChild(total);
+    function calc(){
+      const v=mats.map(i=>parseInt(i.value)||0);
+      // 순서: 기설합용못,기설스티커,신설못,신설스티커,횡단,락카
+      const gis=v[0]+v[1];
+      const sin=v[2]+v[3]+v[4];
+      const all=gis+sin; // 락카 제외
+      total.innerHTML=
+        "기설합 : "+gis+
+        " / 신설합 : "+sin+
+        " / 전체합계(락카 제외) : "+all;
+    }
+    mats.forEach(i=>i.addEventListener("input",calc));
+    calc();
+  }
+  window.V52_EXPORT={
+    getMaterialSummary(){
+      return mats.map(i=>parseInt(i.value)||0);
+    }
+  };
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const nums=[...document.querySelectorAll(".mat")];
+ const gis=document.getElementById("gisTotal");
+ const sin=document.getElementById("sinTotal");
+ const info=document.getElementById("materialTotal");
+ function calc(){
+   const v=nums.map(n=>parseInt(n.value)||0);
+   // expected order: 기설못,기설스티커,신설못,신설스티커,횡단,락카
+   const g=(v[0]||0)+(v[1]||0);
+   const s=(v[2]||0)+(v[3]||0)+(v[4]||0);
+   if(gis) gis.value=g;
+   if(sin) sin.value=s;
+   if(info) info.textContent=`기설합 : ${g} / 신설합 : ${s} / 전체합계(락카 제외) : ${g+s}`;
+ }
+ nums.forEach(n=>n.addEventListener("input",calc));
+ calc();
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const grid=document.querySelector(".gallery-grid");
+ const counter=document.getElementById("photoCounter");
+ const base=grid.children.length;
+ function update(){const t=grid.children.length;counter.textContent=`🖼️ 총 사진: ${t}장 / 신규: [${Math.max(0,t-base)}장]`;}
+ new MutationObserver(update).observe(grid,{childList:true});update();
+ const excel=[...document.querySelectorAll("button")].find(b=>b.textContent.includes("엑셀 저장"));
+ if(excel) excel.addEventListener('click',()=>{},true);
+ const zip=[...document.querySelectorAll("button")].find(b=>b.textContent.includes("ZIP"));
+ if(zip) zip.onclick=async(e)=>{e.preventDefault();const z=new JSZip();grid.querySelectorAll('img').forEach((img,i)=>z.file(`photo_${i+1}.txt`,`Image preview: ${img.src.substring(0,30)}`));const blob=await z.generateAsync({type:'blob'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(document.getElementById('manageNo').value||'사진')+'_ZIP.zip';a.click();};
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const grid=document.querySelector(".gallery-grid");
+ const buttons=[...document.querySelectorAll("button")];
+ const backupBtn=buttons.find(b=>b.textContent.includes("데이터 백업"));
+ const restoreBtn=buttons.find(b=>b.textContent.includes("데이터 복원"));
+ const delBtn=buttons.find(b=>b.textContent.includes("개별 삭제"));
+ const allDelBtn=buttons.find(b=>b.textContent.includes("전체 삭제"));
+
+ function snapshot(){
+   return {
+     manageNo:document.getElementById("manageNo").value,
+     manager:document.getElementById("managerName").value,
+     materials:[...document.querySelectorAll(".mat")].map(i=>i.value),
+     gallery:grid.innerHTML
+   };
+ }
+
+ if(backupBtn){
+   backupBtn.onclick=(e)=>{
+     e.preventDefault();
+     const blob=new Blob([JSON.stringify(snapshot(),null,2)],{type:"application/json"});
+     const a=document.createElement("a");
+     a.href=URL.createObjectURL(blob);
+     a.download=(document.getElementById("manageNo").value||"backup")+"_backup.json";
+     a.click();
+   };
+ }
+
+ if(restoreBtn){
+   const inp=document.createElement("input");
+   inp.type="file"; inp.accept=".json"; inp.style.display="none";
+   document.body.appendChild(inp);
+   restoreBtn.onclick=(e)=>{e.preventDefault(); inp.click();};
+   inp.onchange=()=>{
+      const f=inp.files[0]; if(!f) return;
+      const fr=new FileReader();
+      fr.onload=()=>{
+        const d=JSON.parse(fr.result);
+        document.getElementById("manageNo").value=d.manageNo||"";
+        document.getElementById("managerName").value=d.manager||"";
+        [...document.querySelectorAll(".mat")].forEach((el,i)=>el.value=(d.materials||[])[i]||0);
+        grid.innerHTML=d.gallery||"";
+      };
+      fr.readAsText(f);
+   };
+ }
+
+ if(delBtn){
+   delBtn.onclick=(e)=>{
+     e.preventDefault();
+     const last=grid.querySelector(".photo-card");
+     if(last) last.remove();
+   };
+ }
+
+ if(allDelBtn){
+   allDelBtn.onclick=(e)=>{
+     e.preventDefault();
+     if(confirm("모든 사진을 삭제하시겠습니까?")) grid.innerHTML="";
+   };
+ }
+});
+</script>
+
+
+<style>
+#viewerModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;align-items:center;justify-content:center;flex-direction:column}
+#viewerModal img{max-width:95vw;max-height:80vh;border-radius:8px}
+#viewerClose{margin-top:10px;padding:10px 18px;font-size:18px}
+</style>
+<div id="viewerModal">
+<img id="viewerImg">
+<button id="viewerClose">닫기</button>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const grid=document.querySelector(".gallery-grid");
+ const modal=document.getElementById("viewerModal");
+ const vimg=document.getElementById("viewerImg");
+ document.getElementById("viewerClose").onclick=()=>modal.style.display="none";
+ function enhance(){
+   [...grid.querySelectorAll(".photo-card")].forEach(card=>{
+      const img=card.querySelector("img");
+      if(img && !img.dataset.v58){
+         img.dataset.v58="1";
+         img.style.cursor="zoom-in";
+         img.onclick=()=>{vimg.src=img.src;modal.style.display="flex";};
+      }
+      card.draggable=true;
+   });
+ }
+ enhance();
+ new MutationObserver(enhance).observe(grid,{childList:true});
+ let drag=null;
+ grid.addEventListener("dragstart",e=>{
+   const c=e.target.closest(".photo-card");
+   if(c) drag=c;
+ });
+ grid.addEventListener("dragover",e=>e.preventDefault());
+ grid.addEventListener("drop",e=>{
+   e.preventDefault();
+   const target=e.target.closest(".photo-card");
+   if(drag && target && drag!==target){
+      grid.insertBefore(drag,target);
+      [...grid.querySelectorAll(".photo-no")].forEach((n,i)=>n.textContent=String(i+1).padStart(3,"0"));
+   }
+ });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const grid=document.querySelector(".gallery-grid");
+ if(!grid) return;
+ function updateInfo(){
+   [...grid.querySelectorAll(".photo-card")].forEach(card=>{
+      const img=card.querySelector("img");
+      if(!img) return;
+      let info=card.querySelector(".photo-info");
+      if(!info){
+        info=document.createElement("div");
+        info.className="photo-info";
+        info.style.fontSize="11px";
+        info.style.marginTop="4px";
+        card.appendChild(info);
+      }
+      info.textContent="확대보기 지원 / 드래그 정렬 지원";
+   });
+ }
+ new MutationObserver(updateInfo).observe(grid,{childList:true});
+ updateInfo();
+ window.V59_READY=true;
+});
+
+ saveLocal();
+}
+
+// ===================================================
+// 핵심기능: ExcelJS 기반 이미지 임베딩 서식 파일 동적 생성 및 다운로드
+// ===================================================
+async function saveExcel(){
+ const currentTarget = manageNo.value.trim();
+ if(!currentTarget){
+   alert("엑셀 파일로 정리할 관리번호를 입력해 주세요.");
+   manageNo.focus();
+   return;
+ }
+ 
+ // 입력된 관리번호 기준으로만 사진 필터링
+ const targetPhotos = photos.filter(p => p.manageNo === currentTarget);
+ const photoCount = targetPhotos.length;
+ 
+ if(photoCount === 0){
+   alert(`현재 관리번호 [ ${currentTarget} ] 로 촬영된 사진이 없습니다.\n관리번호 입력 후 사진을 촬영해 주세요.`);
+   return;
+ }
+ 
+ // 사진 수량이 일정하지 않으므로, 최소 5개 슬롯 유지하되 초과 시 수량만큼 열 자동 동적 확장
+ const maxCols = Math.max(5, photoCount);
+ const totalColumns = 2 + maxCols; // A(GIS), B(현장) + 사진 슬롯수
+ 
+ const workbook = new ExcelJS.Workbook();
+ const worksheet = workbook.addWorksheet('사진첩', { views: [{ showGridLines: true }] });
+
+const ws2 = workbook.addWorksheet('점검대상내역');
+ws2.addRow(['관로번호','작업자','기설합','기설못','기설스티커','신설합','신설못','신설스티커','사각','락카','총합계']);
+ws2.addRow([
+manageNo.value, worker.value,
+document.getElementById('gisulSum').value,
+document.getElementById('gisulMot').value,
+document.getElementById('gisulSticker').value,
+document.getElementById('sinsulSum').value,
+document.getElementById('sinsulMot').value,
+document.getElementById('sinsulSticker').value,
+document.getElementById('square').value,
+document.getElementById('lacquer').value,
+document.getElementById('grandTotal').textContent
+]);
+ 
+ // 스타일 가이드 정의
+ const fontTitle = { name: '맑은 고딕', size: 16, bold: true, color: { argb: '1F4E78' } };
+ const fontSub = { name: '맑은 고딕', size: 11, bold: true, color: { argb: '333333' } };
+ const fontGuide = { name: '맑은 고딕', size: 10, bold: true, color: { argb: 'C0392B' } };
+ const fontH1 = { name: '맑은 고딕', size: 11, bold: true, color: { argb: 'FFFFFF' } };
+ const fontH2 = { name: '맑은 고딕', size: 10, bold: true, color: { argb: '333333' } };
+ const fontBody = { name: '맑은 고딕', size: 10, bold: false, color: { argb: '000000' } };
+ 
+ const fillGuide = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF2CC' } };
+ const fillH1 = { type: 'pattern', pattern: 'solid', fgColor: { argb: '1F4E78' } };
+ const fillH2 = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'D9E1F2' } };
+ const fillSlot = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'F8F9F9' } };
+ 
+ const borderThin = {
+     top: { style: 'thin', color: { argb: 'BDC3C7' } },
+     left: { style: 'thin', color: { argb: 'BDC3C7' } },
+     bottom: { style: 'thin', color: { argb: 'BDC3C7' } },
+     right: { style: 'thin', color: { argb: 'BDC3C7' } }
+ };
+ 
+ // 열 너비 구성 (A, B 고정 및 사진 열 자동 생성)
+ const columnWidths = [{ width: 22 }, { width: 16 }];
+ for(let i = 0; i < maxCols; i++) {
+     columnWidths.push({ width: 25 });
+ }
+ worksheet.columns = columnWidths;
+ 
+ // 행 높이 지정
+ worksheet.getRow(1).height = 30;
+ worksheet.getRow(2).height = 20;
+ worksheet.getRow(3).height = 26;
+ worksheet.getRow(4).height = 25;
+ worksheet.getRow(5).height = 25;
+ worksheet.getRow(6).height = 110; // 사진이 들어갈 데이터 행 높이 고정
+ 
+ // 데이터 및 텍스트 매핑
+ worksheet.getCell('A1').value = '통신시설물 현장 사진 관리 대장';
+ worksheet.getCell('A1').font = fontTitle;
+ worksheet.getCell('A1').alignment = { vertical: 'middle' };
+ 
+ worksheet.getCell('A2').value = '';
+ worksheet.getCell('A2').font = fontSub;
+ worksheet.getCell('A2').alignment = { vertical: 'middle' };
+ 
+ // 안내 가이드 라인 셀 병합 및 적용
+ worksheet.mergeCells(3, 1, 3, totalColumns);
+ const guideCell = worksheet.getCell('A3');
+ guideCell.value = '💡 사진 등재 요령 : 표시기 및 스티커 시공 사진은 주변 배경 건물이 잘 보이도록 20m 간격으로 촬영 필요, 1번 사진은 시작 맨홀과 전경을 함께 촬영';
+ 
+ // 상단 1차 레이어 헤더
+ worksheet.getCell('A4').value = 'GIS 정보';
+ worksheet.getCell('B4').value = '현장 정보';
+ worksheet.mergeCells(4, 3, 4, totalColumns);
+ worksheet.getCell('C4').value = '작업사진';
+ 
+ // 상단 2차 상세 헤더
+ worksheet.getCell('A5').value = 'SK관리번호';
+ worksheet.getCell('B5').value = '작업수량\n(신설)';
+ for(let i = 1; i <= maxCols; i++) {
+     worksheet.getCell(5, 2 + i).value = i;
+ }
+ 
+ // 기준 데이터 매핑
+ worksheet.getCell('A6').value = currentTarget;
+ worksheet.getCell('B6').value = photoCount;
+ 
+ // 서식 및 테두리/정렬 일괄 세팅 루프
+ for(let r = 3; r <= 6; r++) {
+     for(let c = 1; c <= totalColumns; c++) {
+         const cell = worksheet.getCell(r, c);
+         cell.border = borderThin;
+         
+         if(r === 3) {
+             cell.fill = fillGuide;
+             cell.font = fontGuide;
+             cell.alignment = { horizontal: 'left', vertical: 'middle' };
+         } else if(r === 4) {
+             cell.fill = fillH1;
+             cell.font = fontH1;
+             cell.alignment = { horizontal: 'center', vertical: 'middle' };
+         } else if(r === 5) {
+             cell.fill = fillH2;
+             cell.font = fontH2;
+             cell.alignment = { horizontal: 'center', vertical: 'middle', wrapText: true };
+         } else if(r === 6) {
+             cell.font = fontBody;
+             cell.alignment = { horizontal: 'center', vertical: 'middle' };
+             if(c >= 3) {
+                 cell.fill = fillSlot;
+                 cell.value = `[사진 ${c-2} 미등록]`;
+                 cell.font = { name: '맑은 고딕', size: 9, italic: true, color: { argb: '7F8C8D' } };
+             }
+         }
+     }
+ }
+ 
+ // 📸 핵심 순회: 수집된 사진 데이터를 Excel 구조 내부에 1:1 완벽 임베디드
+ for(let i = 0; i < photoCount; i++) {
+     const p = targetPhotos[i];
+     try {
+         const base64Content = p.image.split(',')[1];
+         const imgId = workbook.addImage({
+             base64: base64Content,
+             extension: 'jpeg'
+         });
+         
+         const targetColIdx = 2 + i; // C열(인덱스2)부터 순차 정렬
+         
+         // 셀 내부 여백 오프셋을 조절하여 테두리 선이 깔끔하게 생존하도록 배치
+         worksheet.addImage(imgId, {
+             tl: { col: targetColIdx, row: 5, colOff: 40000, rowOff: 40000 },
+             br: { col: targetColIdx + 1, row: 6, colOff: -40000, rowOff: -40000 },
+             editAs: 'oneCell'
+         });
+         
+         // 사진이 삽입된 자리에 있던 텍스트 가이드는 제거
+         worksheet.getCell(6, targetColIdx + 1).value = '';
+     } catch(e) {
+         console.error("이미지 빌드 오류 발생:", e);
+     }
+ }
+ 
+ // 파일명을 입력한 관리번호와 100% 일치시켜 xlsx 파일 생성
+ const buffer = await workbook.xlsx.writeBuffer();
+ const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+ const downloadLink = document.createElement('a');
+ downloadLink.href = URL.createObjectURL(blob);
+ downloadLink.download = `${currentTarget}_지중 표시기 보강 작업_현장 작업사진.xlsx`;
+ downloadLink.click();
+ URL.revokeObjectURL(downloadLink.href);
+}
+
+async function saveSelectedZip(){
+ const zip=new JSZip();
+ let count=0;
+ document.querySelectorAll(".chk").forEach(c=>{
+   if(c.checked){
+      const i=Number(c.dataset.index);
+      const p=photos[i];
+      zip.file(`${p.manageNo}-${String(p.no).padStart(3,"0")}.jpg`, p.image.split(",")[1], {base64:true});
+      count++;
+   }
+ });
+ if(count===0){alert("선택된 사진이 없습니다.");return;}
+ const blob=await zip.generateAsync({type:"blob"});
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ 
+let firstName = "관리번호";
+document.querySelectorAll(".chk").forEach(c=>{
+ if(c.checked && firstName==="관리번호"){
+   const p=photos[Number(c.dataset.index)];
+   firstName=p.manageNo||"관리번호";
+ }
+});
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>현장사진관리 V32.1 프리미엄 엑셀자동화판</title>
+<!-- ZIP 압축 및 Excel 생성 외부 고속 라이브러리 탑재 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<style>
+body{font-family:Malgun Gothic,sans-serif;background:#f5f5f5;margin:0;padding:10px;padding-bottom:30px;}
+.header{background:#1565c0;color:#fff;padding:12px;border-radius:10px}
+input{width:100%;height:46px;margin:6px 0;padding:8px;box-sizing:border-box;border:1px solid #ccc;border-radius:6px;font-size:14px;}
+.btn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px;}
+button{height:50px;border:0;border-radius:8px;color:#fff;font-size:12px;font-weight:bold;cursor:pointer;transition:background 0.2s;}
+button:active{opacity:0.8;}
+.blue{background:#1565c0}.green{background:#2e7d32}.purple{background:#7b1fa2}.red{background:#c62828}.gray{background:#616161}.orange{background:#e65100}
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:4px;box-shadow:0 1px 3px rgba(0,0,0,0.1);position:relative;}
+.card img{width:100%;height:90px;object-fit:cover;border-radius:4px;}
+.no{text-align:center;font-weight:bold;font-size:11px;margin:2px 0;}
+.manage-label{font-size:10px;color:#555;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.chk{transform:scale(1.2);margin:4px;}
+</style>
+</head>
+<body>
+<div class="header"><h3>📦 현장사진관리 V32.1 (엑셀고도화)</h3>총사진 : <span id="totalCount">0</span>장 (현재 관리번호 촬영수 : <span id="currentCount">0</span>장)</div>
+
+<input id="manageNo" placeholder="관리번호 (예: 달서CD1776) *필수" oninput="render()">
+<input id="worker" placeholder="작업자">
+<style>
+.inspect-wrap{background:#fff;border:1px solid #ddd;border-radius:8px;padding:6px;margin:6px 0}
+.inspect-row{display:flex;align-items:center;gap:2px;flex-wrap:wrap;margin:3px 0}
+.inspect-row span{font-size:12px;font-weight:bold}
+.inspect-row input{width:40px;height:28px;margin:0;padding:0;text-align:center;font-size:13px}
+.inspect-total{font-size:12px;font-weight:bold;background:#e3f2fd;padding:4px;border-radius:4px;margin-top:4px}
+</style>
+
+
+<div class="inspect-wrap">
+<div class="inspect-row">
+<span>기설합</span><input type="number" id="gisulSum" readonly value="0">
+<span>못</span><input type="number" id="gisulMot" value="0" min="0">
+<span>스티커</span><input type="number" id="gisulSticker" value="0" min="0">
+</div>
+
+<div class="inspect-row">
+<span>신설합</span><input type="number" id="sinsulSum" readonly value="0">
+<span>못</span><input type="number" id="sinsulMot" value="0" min="0">
+<span>스티커</span><input type="number" id="sinsulSticker" value="0" min="0">
+<span>사각</span><input type="number" id="square" value="0" min="0">
+<span>락카</span><input type="number" id="lacquer" value="0" min="0">
+</div>
+
+<div class="inspect-total">
+총합계 : <span id="grandTotal">0</span>
+</div>
+</div>
+
+<script>
+function calcInspect(){
+ const g=(+gisulMot.value||0)+(+gisulSticker.value||0);
+ const s=(+sinsulMot.value||0)+(+sinsulSticker.value||0)+(+square.value||0);
+ gisulSum.value=g;
+ sinsulSum.value=s;
+ grandTotal.textContent=g+s;
+}
+setTimeout(()=>{
+ document.querySelectorAll('#gisulMot,#gisulSticker,#sinsulMot,#sinsulSticker,#square').forEach(e=>e.addEventListener('input',calcInspect));
+ calcInspect();
+},100);
+</script>
+
+
+
+<div class="btn-grid">
+<button class="blue" onclick="takePhoto()">📷촬영</button>
+<button class="green" onclick="gallerySelect()">🖼갤러리</button>
+<button class="orange" onclick="saveExcel()">📊엑셀저장</button>
+<button class="purple" onclick="saveSelectedZip()">📦ZIP압축</button>
+<button class="gray" onclick="backupData()">💾백업</button>
+<button class="gray" onclick="restoreData()">♻복원</button>
+<button class="red" onclick="deleteSelected()">☑삭제</button>
+<button class="red" onclick="deleteAll()">🗑전체삭제</button>
+</div>
+
+<input type="file" id="fileInput" accept="image/*" capture="environment" multiple hidden>
+<input type="file" id="restoreFile" accept=".json" hidden>
+<div id="photoGrid" class="photo-grid"></div>
+
+<script>
+let photos=JSON.parse(localStorage.getItem("PHOTO_V32")||"[]");
+let trash=[];
+manageNo.value=localStorage.getItem("lastManageNo")||"";
+worker.value=localStorage.getItem("lastWorker")||"";
+
+function saveLocal(){
+ localStorage.setItem("PHOTO_V32",JSON.stringify(photos));
+ localStorage.setItem("lastManageNo",manageNo.value);
+ localStorage.setItem("lastWorker",worker.value);
+}
+
+function checkManageNo(){
+ if(manageNo.value.trim()===""){alert("관리번호를 입력하세요.");manageNo.focus();return false;}
+ return true;
+}
+
+function takePhoto(){if(!checkManageNo())return;fileInput.setAttribute("capture","environment");fileInput.click();}
+function gallerySelect(){if(!checkManageNo())return;fileInput.removeAttribute("capture");fileInput.click();}
+
+fileInput.addEventListener("change",e=>{
+ [...e.target.files].forEach(file=>{
+  const r=new FileReader();
+  r.onload=x=>{
+   photos.push({no:photos.length+1,manageNo:manageNo.value.trim(),worker:worker.value.trim(),date:new Date().toLocaleString(),image:x.target.result});
+   render();
+   setTimeout(()=>{
+      if(document.hasFocus()){
+         try{ takePhoto(); }catch(e){}
+      }
+   },500);
+  };
+  r.readAsDataURL(file);
+ });
+});
+
+function render(){
+ photos.forEach((p,i)=>p.no=i+1);
+ totalCount.textContent=photos.length;
+ 
+ const currentTarget = manageNo.value.trim();
+ const currentFiltered = photos.filter(p => p.manageNo === currentTarget);
+ currentCount.textContent = currentFiltered.length;
+ 
+ photoGrid.innerHTML="";
+ photos.forEach((p,i)=>{
+  // 현재 입력한 관리번호와 일치하는 카드는 하이라이트 배경 적용
+  const isCurrent = p.manageNo === currentTarget ? "background:#e3f2fd; border:1px solid #90caf9;" : "";
+  photoGrid.innerHTML += `<div class="card" style="${isCurrent}">
+  <input type="checkbox" class="chk" data-index="${i}">
+  <div class="no">${String(p.no).padStart(3,"0")}</div>
+  <img src="${p.image}">
+  <div class="manage-label">${p.manageNo}</div>
+  </div>`;
+ });
+ saveLocal();
+}
+
+// ===================================================
+// 핵심기능: ExcelJS 기반 이미지 임베딩 서식 파일 동적 생성 및 다운로드
+// ===================================================
+async function saveExcel(){
+ const currentTarget = manageNo.value.trim();
+ if(!currentTarget){
+   alert("엑셀 파일로 정리할 관리번호를 입력해 주세요.");
+   manageNo.focus();
+   return;
+ }
+ 
+ // 입력된 관리번호 기준으로만 사진 필터링
+ const targetPhotos = photos.filter(p => p.manageNo === currentTarget);
+ const photoCount = targetPhotos.length;
+ 
+ if(photoCount === 0){
+   alert(`현재 관리번호 [ ${currentTarget} ] 로 촬영된 사진이 없습니다.\n관리번호 입력 후 사진을 촬영해 주세요.`);
+   return;
+ }
+ 
+ // 사진 수량이 일정하지 않으므로, 최소 5개 슬롯 유지하되 초과 시 수량만큼 열 자동 동적 확장
+ const maxCols = Math.max(5, photoCount);
+ const totalColumns = 2 + maxCols; // A(GIS), B(현장) + 사진 슬롯수
+ 
+ const workbook = new ExcelJS.Workbook();
+ const worksheet = workbook.addWorksheet('사진첩', { views: [{ showGridLines: true }] });
+
+const ws2 = workbook.addWorksheet('점검대상내역');
+ws2.addRow(['관로번호','작업자','기설합','기설못','기설스티커','신설합','신설못','신설스티커','사각','락카','총합계']);
+ws2.addRow([
+manageNo.value, worker.value,
+document.getElementById('gisulSum').value,
+document.getElementById('gisulMot').value,
+document.getElementById('gisulSticker').value,
+document.getElementById('sinsulSum').value,
+document.getElementById('sinsulMot').value,
+document.getElementById('sinsulSticker').value,
+document.getElementById('square').value,
+document.getElementById('lacquer').value,
+document.getElementById('grandTotal').textContent
+]);
+ 
+ // 스타일 가이드 정의
+ const fontTitle = { name: '맑은 고딕', size: 16, bold: true, color: { argb: '1F4E78' } };
+ const fontSub = { name: '맑은 고딕', size: 11, bold: true, color: { argb: '333333' } };
+ const fontGuide = { name: '맑은 고딕', size: 10, bold: true, color: { argb: 'C0392B' } };
+ const fontH1 = { name: '맑은 고딕', size: 11, bold: true, color: { argb: 'FFFFFF' } };
+ const fontH2 = { name: '맑은 고딕', size: 10, bold: true, color: { argb: '333333' } };
+ const fontBody = { name: '맑은 고딕', size: 10, bold: false, color: { argb: '000000' } };
+ 
+ const fillGuide = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF2CC' } };
+ const fillH1 = { type: 'pattern', pattern: 'solid', fgColor: { argb: '1F4E78' } };
+ const fillH2 = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'D9E1F2' } };
+ const fillSlot = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'F8F9F9' } };
+ 
+ const borderThin = {
+     top: { style: 'thin', color: { argb: 'BDC3C7' } },
+     left: { style: 'thin', color: { argb: 'BDC3C7' } },
+     bottom: { style: 'thin', color: { argb: 'BDC3C7' } },
+     right: { style: 'thin', color: { argb: 'BDC3C7' } }
+ };
+ 
+ // 열 너비 구성 (A, B 고정 및 사진 열 자동 생성)
+ const columnWidths = [{ width: 22 }, { width: 16 }];
+ for(let i = 0; i < maxCols; i++) {
+     columnWidths.push({ width: 25 });
+ }
+ worksheet.columns = columnWidths;
+ 
+ // 행 높이 지정
+ worksheet.getRow(1).height = 30;
+ worksheet.getRow(2).height = 20;
+ worksheet.getRow(3).height = 26;
+ worksheet.getRow(4).height = 25;
+ worksheet.getRow(5).height = 25;
+ worksheet.getRow(6).height = 110; // 사진이 들어갈 데이터 행 높이 고정
+ 
+ // 데이터 및 텍스트 매핑
+ worksheet.getCell('A1').value = '통신시설물 현장 사진 관리 대장';
+ worksheet.getCell('A1').font = fontTitle;
+ worksheet.getCell('A1').alignment = { vertical: 'middle' };
+ 
+ worksheet.getCell('A2').value = '';
+ worksheet.getCell('A2').font = fontSub;
+ worksheet.getCell('A2').alignment = { vertical: 'middle' };
+ 
+ // 안내 가이드 라인 셀 병합 및 적용
+ worksheet.mergeCells(3, 1, 3, totalColumns);
+ const guideCell = worksheet.getCell('A3');
+ guideCell.value = '💡 사진 등재 요령 : 표시기 및 스티커 시공 사진은 주변 배경 건물이 잘 보이도록 20m 간격으로 촬영 필요, 1번 사진은 시작 맨홀과 전경을 함께 촬영';
+ 
+ // 상단 1차 레이어 헤더
+ worksheet.getCell('A4').value = 'GIS 정보';
+ worksheet.getCell('B4').value = '현장 정보';
+ worksheet.mergeCells(4, 3, 4, totalColumns);
+ worksheet.getCell('C4').value = '작업사진';
+ 
+ // 상단 2차 상세 헤더
+ worksheet.getCell('A5').value = 'SK관리번호';
+ worksheet.getCell('B5').value = '작업수량\n(신설)';
+ for(let i = 1; i <= maxCols; i++) {
+     worksheet.getCell(5, 2 + i).value = i;
+ }
+ 
+ // 기준 데이터 매핑
+ worksheet.getCell('A6').value = currentTarget;
+ worksheet.getCell('B6').value = photoCount;
+ 
+ // 서식 및 테두리/정렬 일괄 세팅 루프
+ for(let r = 3; r <= 6; r++) {
+     for(let c = 1; c <= totalColumns; c++) {
+         const cell = worksheet.getCell(r, c);
+         cell.border = borderThin;
+         
+         if(r === 3) {
+             cell.fill = fillGuide;
+             cell.font = fontGuide;
+             cell.alignment = { horizontal: 'left', vertical: 'middle' };
+         } else if(r === 4) {
+             cell.fill = fillH1;
+             cell.font = fontH1;
+             cell.alignment = { horizontal: 'center', vertical: 'middle' };
+         } else if(r === 5) {
+             cell.fill = fillH2;
+             cell.font = fontH2;
+             cell.alignment = { horizontal: 'center', vertical: 'middle', wrapText: true };
+         } else if(r === 6) {
+             cell.font = fontBody;
+             cell.alignment = { horizontal: 'center', vertical: 'middle' };
+             if(c >= 3) {
+                 cell.fill = fillSlot;
+                 cell.value = `[사진 ${c-2} 미등록]`;
+                 cell.font = { name: '맑은 고딕', size: 9, italic: true, color: { argb: '7F8C8D' } };
+             }
+         }
+     }
+ }
+ 
+ // 📸 핵심 순회: 수집된 사진 데이터를 Excel 구조 내부에 1:1 완벽 임베디드
+ for(let i = 0; i < photoCount; i++) {
+     const p = targetPhotos[i];
+     try {
+         const base64Content = p.image.split(',')[1];
+         const imgId = workbook.addImage({
+             base64: base64Content,
+             extension: 'jpeg'
+         });
+         
+         const targetColIdx = 2 + i; // C열(인덱스2)부터 순차 정렬
+         
+         // 셀 내부 여백 오프셋을 조절하여 테두리 선이 깔끔하게 생존하도록 배치
+         worksheet.addImage(imgId, {
+             tl: { col: targetColIdx, row: 5, colOff: 40000, rowOff: 40000 },
+             br: { col: targetColIdx + 1, row: 6, colOff: -40000, rowOff: -40000 },
+             editAs: 'oneCell'
+         });
+         
+         // 사진이 삽입된 자리에 있던 텍스트 가이드는 제거
+         worksheet.getCell(6, targetColIdx + 1).value = '';
+     } catch(e) {
+         console.error("이미지 빌드 오류 발생:", e);
+     }
+ }
+ 
+ // 파일명을 입력한 관리번호와 100% 일치시켜 xlsx 파일 생성
+ const buffer = await workbook.xlsx.writeBuffer();
+ const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+ const downloadLink = document.createElement('a');
+ downloadLink.href = URL.createObjectURL(blob);
+ downloadLink.download = `${currentTarget}_지중 표시기 보강 작업_현장 작업사진.xlsx`;
+ downloadLink.click();
+ URL.revokeObjectURL(downloadLink.href);
+}
+
+async function saveSelectedZip(){
+ const zip=new JSZip();
+ let count=0;
+ document.querySelectorAll(".chk").forEach(c=>{
+   if(c.checked){
+      const i=Number(c.dataset.index);
+      const p=photos[i];
+      zip.file(`${p.manageNo}-${String(p.no).padStart(3,"0")}.jpg`, p.image.split(",")[1], {base64:true});
+      count++;
+   }
+ });
+ if(count===0){alert("선택된 사진이 없습니다.");return;}
+ const blob=await zip.generateAsync({type:"blob"});
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ 
+let firstName = "관리번호";
+document.querySelectorAll(".chk").forEach(c=>{
+ if(c.checked && firstName==="관리번호"){
+   const p=photos[Number(c.dataset.index)];
+   firstName=p.manageNo||"관리번호";
+ }
+});
+a.download=firstName + ".zip";
+ a.click();
+}
+
+function deleteSelected(){
+ let sel=[];
+ document.querySelectorAll(".chk").forEach(c=>{if(c.checked) sel.push(+c.dataset.index)});
+ if(sel.length===0){alert("삭제할 사진을 체크해 주세요.");return;}
+ trash.push(...photos.filter((p,i)=>sel.includes(i)));
+ photos=photos.filter((p,i)=>!sel.includes(i));
+ render();
+}
+
+function restoreTrash(){
+ if(trash.length===0){alert("복원할 사진 데이터가 없습니다.");return;}
+ photos.push(...trash);
+ trash=[];
+ render();
+ alert("삭제했던 사진이 정상 복원되었습니다.");
+}
+
+function deleteAll(){
+ if(confirm("저장된 전체 사진을 삭제하시겠습니까? (로컬 백업 권장)")){
+   photos=[];
+   render();
+ }
+}
+
+function backupData(){
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(new Blob([JSON.stringify(photos)],{type:"application/json"}));
+ a.download="photoBackup_" + new Date().toISOString().slice(0,10) + ".json"; 
+ a.click();
+}
+
+function restoreData(){restoreFile.click();}
+restoreFile.addEventListener("change",e=>{
+ const f=e.target.files[0]; if(!f)return;
+ const r=new FileReader();
+ r.onload=x=>{
+   try {
+     photos=JSON.parse(x.target.result);
+     render();
+     alert("데이터가 성공적으로 복원되었습니다.");
+   } catch(err) {
+     alert("올바르지 않은 백업 파일입니다.");
+   }
+ };
+ r.readAsText(f);
+});
+
+// 초기화 실행
+render();
+</script>
+</body>
+</html>

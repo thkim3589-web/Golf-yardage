@@ -110,12 +110,16 @@
         <TextView
             android:id="@+id/text_gps_accuracy"
             style="@style/BadgeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             tools:text="정확도 ±5m" />
 
         <TextView
             android:id="@+id/text_weather"
             style="@style/BadgeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="6dp"
             tools:text="24℃ · 맑음 · 바람 2.1m/s" />
@@ -169,8 +173,17 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center">
-                <TextView style="@style/DistanceLabel" android:text="@string/label_front" />
-                <TextView android:id="@+id/text_front" style="@style/DistanceValue" tools:text="128" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/DistanceLabel"
+                    android:text="@string/label_front" />
+                <TextView
+                    android:id="@+id/text_front"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/DistanceValue"
+                    tools:text="128" />
             </LinearLayout>
 
             <LinearLayout
@@ -179,8 +192,17 @@
                 android:layout_weight="1.3"
                 android:orientation="vertical"
                 android:gravity="center">
-                <TextView style="@style/DistanceLabel" android:text="@string/label_center" />
-                <TextView android:id="@+id/text_center" style="@style/DistanceValueLarge" tools:text="143" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/DistanceLabel"
+                    android:text="@string/label_center" />
+                <TextView
+                    android:id="@+id/text_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/DistanceValueLarge"
+                    tools:text="143" />
             </LinearLayout>
 
             <LinearLayout
@@ -189,8 +211,17 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center">
-                <TextView style="@style/DistanceLabel" android:text="@string/label_back" />
-                <TextView android:id="@+id/text_back" style="@style/DistanceValue" tools:text="158" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/DistanceLabel"
+                    android:text="@string/label_back" />
+                <TextView
+                    android:id="@+id/text_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/DistanceValue"
+                    tools:text="158" />
             </LinearLayout>
         </LinearLayout>
 

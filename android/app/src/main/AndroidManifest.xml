@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".GolfYardageApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.GolfYardage"
+        android:supportsRtl="true">
+
+        <activity
+            android:name=".ui.course.CourseListActivity"
+            android:exported="true"
+            android:theme="@style/Theme.GolfYardage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.round.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GolfYardage"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.settings.ClubSettingsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GolfYardage" />
+
+        <activity
+            android:name=".ui.crash.CrashActivity"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

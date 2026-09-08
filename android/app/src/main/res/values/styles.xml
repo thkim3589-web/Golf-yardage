@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BadgeText">
+        <item name="android:background">@drawable/bg_badge</item>
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:paddingVertical">5dp</item>
+        <item name="android:textColor">@color/text_on_green</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="DistanceLabel">
+        <item name="android:textColor">@color/text_on_green_dim</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="DistanceValue">
+        <item name="android:textColor">@color/text_on_green</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DistanceValueLarge">
+        <item name="android:textColor">@color/text_on_green</item>
+        <item name="android:textSize">52sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

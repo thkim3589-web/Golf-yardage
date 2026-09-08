@@ -1,0 +1,28 @@
+{
+  "id": "seonsan_cc",
+  "name": "선산CC",
+  "region": "경북",
+  "imageFile": null,
+  "_note": "좌표(lat/lng)와 파(par)는 아직 입력되지 않은 예시 데이터입니다. 위성지도를 보며 각 홀의 tee/greenFront/greenCenter/greenBack/pin 좌표와 par 값을 직접 채워 넣어 주세요. elevation(고도, m)을 넣으면 경사 반영 거리 계산에 사용됩니다.",
+  "location": null,
+  "holes": [
+    { "number": 1, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 2, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 3, "par": 3, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 4, "par": 5, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 5, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 6, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 7, "par": 3, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 8, "par": 5, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 9, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 10, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 11, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 12, "par": 3, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 13, "par": 5, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 14, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 15, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 16, "par": 3, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 17, "par": 5, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 18, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null }
+  ]
+}

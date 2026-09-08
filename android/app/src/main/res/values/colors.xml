@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fairway_green">#1B5E20</color>
+    <color name="fairway_green_dark">#0D3D1A</color>
+    <color name="fairway_green_light">#4C8C4A</color>
+    <color name="accent_orange">#FF6B35</color>
+    <color name="accent_orange_dark">#E85A2A</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="background_light">#F3F6F3</color>
+    <color name="text_primary">#1A1F1B</color>
+    <color name="text_secondary">#5C6B5D</color>
+    <color name="text_on_green">#FFFFFF</color>
+    <color name="text_on_green_dim">#CFE8CF</color>
+    <color name="divider">#E1E8E1</color>
+    <color name="gps_accuracy_fill">#334C8C4A</color>
+    <color name="gps_accuracy_stroke">#4C8C4A</color>
+</resources>

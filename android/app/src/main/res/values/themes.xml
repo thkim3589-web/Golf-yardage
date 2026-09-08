@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.GolfYardage" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/fairway_green</item>
+        <item name="colorPrimaryDark">@color/fairway_green_dark</item>
+        <item name="colorAccent">@color/accent_orange</item>
+        <item name="android:statusBarColor">@color/fairway_green_dark</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

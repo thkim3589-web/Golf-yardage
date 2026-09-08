@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">골프 야드지</string>
+
+    <string name="course_list_title">골프장 선택</string>
+    <string name="course_list_empty">등록된 골프장이 없습니다</string>
+
+    <string name="label_front">앞</string>
+    <string name="label_center">중앙</string>
+    <string name="label_back">뒤</string>
+    <string name="unit_meter">m</string>
+    <string name="unit_yard">yd</string>
+
+    <string name="missing_coordinates">좌표 미입력</string>
+    <string name="gps_waiting">GPS 신호 찾는 중…</string>
+    <string name="gps_accuracy_format">정확도 ±%1$dm</string>
+
+    <string name="action_save_shot">현재 위치 샷 저장</string>
+    <string name="action_clear_shot">저장 위치 해제</string>
+    <string name="shot_saved_from">저장된 위치 기준</string>
+    <string name="live_gps_basis">현재 위치 기준</string>
+
+    <string name="target_distance_format">목표 지점까지 %1$s%2$s</string>
+    <string name="tap_map_hint">지도를 탭하면 목표 지점까지 거리를 볼 수 있어요</string>
+
+    <string name="recommended_club_format">추천 클럽: %1$s</string>
+    <string name="recommended_club_none">추천 클럽: 클럽 거리를 먼저 등록하세요</string>
+
+    <string name="plays_like_format">경사 반영 약 %1$s%2$s</string>
+    <string name="plays_like_disclaimer">스마트폰 GPS 고도는 오차가 있어 참고용입니다</string>
+
+    <string name="strategy_tip_title">공략법</string>
+    <string name="strategy_tip_empty">등록된 공략법이 없습니다</string>
+
+    <string name="hole_format">%1$d번 홀</string>
+    <string name="par_format">파 %1$d</string>
+
+    <string name="weather_format">%1$d℃ · %2$s · 바람 %3$.1fm/s</string>
+    <string name="weather_loading">날씨 확인 중…</string>
+    <string name="weather_unavailable">날씨 정보 없음</string>
+
+    <string name="menu_club_settings">클럽 거리 설정</string>
+    <string name="club_settings_title">내 클럽별 평균 비거리</string>
+    <string name="club_settings_hint">라운드 전에 입력해두면 남은 거리에 맞는 클럽을 추천해드려요</string>
+    <string name="unit_hint_m">m</string>
+
+    <string name="permission_needed_title">위치 권한이 필요해요</string>
+    <string name="permission_needed_body">현재 위치 기반 남은 거리를 계산하려면 위치 권한을 허용해주세요</string>
+    <string name="permission_grant">권한 허용</string>
+</resources>

@@ -24,12 +24,14 @@ object CourseRepository {
         val array = JSONArray(text)
         return (0 until array.length()).map { i ->
             val obj = array.getJSONObject(i)
+            val id = obj.getString("id")
             CourseSummary(
-                id = obj.getString("id"),
+                id = id,
                 name = obj.getString("name"),
                 region = obj.optString("region", ""),
                 imageFile = obj.optStringOrNull("imageFile"),
-                location = parseGeoPoint(obj.optJSONObject("location"))
+                logoFile = obj.optStringOrNull("logoFile"),
+                location = CourseOverrideStore.loadLocation(context, id) ?: parseGeoPoint(obj.optJSONObject("location"))
             )
         }
     }
@@ -40,16 +42,32 @@ object CourseRepository {
         val obj = JSONObject(text)
 
         val holesArray = obj.getJSONArray("holes")
-        val holes = (0 until holesArray.length()).map { i -> parseHole(holesArray.getJSONObject(i)) }
+        val holes = (0 until holesArray.length()).map { i ->
+            val hole = applyTeeOverride(context, courseId, parseHole(holesArray.getJSONObject(i)))
+            applyPinOverride(context, courseId, hole)
+        }
 
         return Course(
             id = obj.getString("id"),
             name = obj.getString("name"),
             region = obj.optString("region", ""),
             imageFile = obj.optStringOrNull("imageFile"),
-            location = parseGeoPoint(obj.optJSONObject("location")),
+            logoFile = obj.optStringOrNull("logoFile"),
+            location = CourseOverrideStore.loadLocation(context, courseId) ?: parseGeoPoint(obj.optJSONObject("location")),
             holes = holes
         )
+    }
+
+    /** 앱 안에서 등록한 티박스 좌표가 있으면 번들 JSON의 값을 덮어쓴다. */
+    private fun applyTeeOverride(context: Context, courseId: String, hole: Hole): Hole {
+        val override = CourseOverrideStore.loadTee(context, courseId, hole.number) ?: return hole
+        return hole.copy(tee = override)
+    }
+
+    /** 라운드 중 "핀 위치" 버튼으로 등록한 실시간 GPS 좌표가 있으면 번들 값을 덮어쓴다. */
+    private fun applyPinOverride(context: Context, courseId: String, hole: Hole): Hole {
+        val override = CourseOverrideStore.loadPin(context, courseId, hole.number) ?: return hole
+        return hole.copy(pin = override)
     }
 
     private fun parseHole(obj: JSONObject): Hole {
@@ -78,7 +96,11 @@ object CourseRepository {
             pin = parseGeoPoint(obj.optJSONObject("pin")),
             greenBoundary = boundary,
             slope = slope,
-            strategyTip = obj.optStringOrNull("strategyTip")
+            strategyTip = obj.optStringOrNull("strategyTip"),
+            yardageMeters = if (obj.has("yardageMeters") && !obj.isNull("yardageMeters")) obj.optInt("yardageMeters") else null,
+            hdcp = if (obj.has("hdcp") && !obj.isNull("hdcp")) obj.optInt("hdcp") else null,
+            greenSizeNote = obj.optStringOrNull("greenSizeNote"),
+            illustrationFile = obj.optStringOrNull("illustrationFile")
         )
     }
 

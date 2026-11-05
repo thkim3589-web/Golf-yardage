@@ -1,0 +1,29 @@
+{
+  "id": "podo_cc",
+  "name": "포도CC",
+  "region": "김천시",
+  "imageFile": null,
+  "logoFile": "podo_cc.svg",
+  "_note": "공개 데이터로 이름·지역만 수집한 초안입니다. par는 확인 전 임시값(전 홀 파4)이고 location·홀별 tee/green 좌표는 미입력이니, 실제 정보로 채워 넣어 주세요.",
+  "location": null,
+  "holes": [
+    { "number": 1, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 2, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 3, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 4, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 5, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 6, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 7, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 8, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 9, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 10, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 11, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 12, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 13, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 14, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 15, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 16, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 17, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null },
+    { "number": 18, "par": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": null }
+  ]
+}

@@ -1,8 +1,362 @@
 [
   {
+    "id": "interbugo_gyeongsan",
+    "name": "인터불고경산",
+    "region": "경산시",
+    "imageFile": null,
+    "logoFile": "interbugo_gyeongsan.png",
+    "location": null
+  },
+  {
+    "id": "daegu_cc",
+    "name": "대구CC",
+    "region": "경산시",
+    "imageFile": null,
+    "logoFile": "daegu_cc.svg",
+    "location": null
+  },
+  {
+    "id": "gangdong_dianes_cc",
+    "name": "강동디아너스컨트리클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "gangdong_dianes_cc.png",
+    "location": null
+  },
+  {
+    "id": "gyeongju_cc",
+    "name": "경주컨트리클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "gyeongju_cc.png",
+    "location": null
+  },
+  {
+    "id": "gyeongju_silla_cc",
+    "name": "경주신라CC",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "gyeongju_silla_cc.png",
+    "location": null
+  },
+  {
+    "id": "golfzone_gampo",
+    "name": "골프존카운티 감포",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "golfzone_gampo.png",
+    "location": { "lat": 35.7779446, "lng": 129.4935870 }
+  },
+  {
+    "id": "mauna_ocean_cc",
+    "name": "마우나오션컨트리클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "mauna_ocean_cc.png",
+    "location": null
+  },
+  {
+    "id": "bomun_gc",
+    "name": "보문골프클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "bomun_gc.svg",
+    "location": null
+  },
+  {
+    "id": "seorabeol_gc",
+    "name": "서라벌골프클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "seorabeol_gc.png",
+    "location": null
+  },
+  {
+    "id": "sunrich_gc",
+    "name": "선리치골프클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "sunrich_gc.png",
+    "location": null
+  },
+  {
+    "id": "angang_legend_gc",
+    "name": "안강레전드골프클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "angang_legend_gc.png",
+    "location": null
+  },
+  {
+    "id": "uri_gc",
+    "name": "우리골프클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "uri_gc.png",
+    "location": null
+  },
+  {
+    "id": "east_hill_cc",
+    "name": "이스트힐컨트리클럽",
+    "region": "경주시",
+    "imageFile": null,
+    "logoFile": "east_hill_cc.png",
+    "location": null
+  },
+  {
+    "id": "golfzone_gumi",
+    "name": "골프존카운티 구미",
+    "region": "구미시",
+    "imageFile": null,
+    "logoFile": "golfzone_gumi.png",
+    "location": { "lat": 36.1573388, "lng": 128.4508808 }
+  },
+  {
+    "id": "gumi_cc",
+    "name": "구미컨트리클럽",
+    "region": "구미시",
+    "imageFile": null,
+    "logoFile": "gumi_cc.png",
+    "location": null
+  },
+  {
     "id": "seonsan_cc",
     "name": "선산CC",
-    "region": "경북",
-    "imageFile": null
+    "region": "구미시",
+    "imageFile": null,
+    "logoFile": "seonsan_cc.png",
+    "location": { "lat": 36.1573388, "lng": 128.4508808 }
+  },
+  {
+    "id": "podo_cc",
+    "name": "포도CC",
+    "region": "김천시",
+    "imageFile": null,
+    "logoFile": "podo_cc.svg",
+    "location": null
+  },
+  {
+    "id": "apple_valley_cc",
+    "name": "애플밸리CC",
+    "region": "김천시",
+    "imageFile": null,
+    "logoFile": "apple_valley_cc.png",
+    "location": null
+  },
+  {
+    "id": "mungyeong_gc",
+    "name": "문경GC",
+    "region": "문경시",
+    "imageFile": null,
+    "logoFile": "mungyeong_gc.png",
+    "location": null
+  },
+  {
+    "id": "blueone_sangju",
+    "name": "블루원상주",
+    "region": "상주시",
+    "imageFile": null,
+    "logoFile": "blueone_sangju.svg",
+    "location": null
+  },
+  {
+    "id": "nam_andong_cc",
+    "name": "남안동CC",
+    "region": "안동시",
+    "imageFile": null,
+    "logoFile": "nam_andong_cc.png",
+    "location": null
+  },
+  {
+    "id": "andong_lake_cc",
+    "name": "안동레이크CC",
+    "region": "안동시",
+    "imageFile": null,
+    "logoFile": "andong_lake_cc.svg",
+    "location": null
+  },
+  {
+    "id": "andong_riverhill_cc",
+    "name": "안동리버힐CC",
+    "region": "안동시",
+    "imageFile": null,
+    "logoFile": "andong_riverhill_cc.png",
+    "location": null
+  },
+  {
+    "id": "golfzone_cheongtong",
+    "name": "골프존카운티 청통",
+    "region": "영천시",
+    "imageFile": null,
+    "logoFile": "golfzone_cheongtong.png",
+    "location": { "lat": 35.9877466, "lng": 128.8122399 }
+  },
+  {
+    "id": "yeongcheon_opel",
+    "name": "영천오펠",
+    "region": "영천시",
+    "imageFile": null,
+    "logoFile": "yeongcheon_opel.png",
+    "location": null
+  },
+  {
+    "id": "ocean_hills_yeongcheon",
+    "name": "오션힐스영천",
+    "region": "영천시",
+    "imageFile": null,
+    "logoFile": "ocean_hills_yeongcheon.png",
+    "location": null
+  },
+  {
+    "id": "chungseongdae_cc",
+    "name": "충성대CC",
+    "region": "영천시",
+    "imageFile": null,
+    "logoFile": "chungseongdae_cc.png",
+    "location": null
+  },
+  {
+    "id": "ocean_hills_pohang",
+    "name": "오션힐스포항",
+    "region": "포항시",
+    "imageFile": null,
+    "logoFile": "ocean_hills_pohang.png",
+    "location": null
+  },
+  {
+    "id": "pohang_cc",
+    "name": "포항CC",
+    "region": "포항시",
+    "imageFile": null,
+    "logoFile": "pohang_cc.png",
+    "location": null
+  },
+  {
+    "id": "chungmudae_gc",
+    "name": "충무대 체력단련장",
+    "region": "포항시",
+    "imageFile": null,
+    "logoFile": "chungmudae_gc.png",
+    "location": null
+  },
+  {
+    "id": "eastern_cc",
+    "name": "이스턴컨트리클럽",
+    "region": "포항시",
+    "imageFile": null,
+    "logoFile": "eastern_cc.png",
+    "location": null
+  },
+  {
+    "id": "goryeong_opel",
+    "name": "고령오펠",
+    "region": "고령군",
+    "imageFile": null,
+    "logoFile": "goryeong_opel.png",
+    "location": null
+  },
+  {
+    "id": "daegaya_cc",
+    "name": "대가야CC",
+    "region": "고령군",
+    "imageFile": null,
+    "logoFile": "daegaya_cc.png",
+    "location": null
+  },
+  {
+    "id": "masterpiece_cc",
+    "name": "마스터피스CC",
+    "region": "고령군",
+    "imageFile": null,
+    "logoFile": "masterpiece_cc.png",
+    "location": null
+  },
+  {
+    "id": "uni_valley_cc",
+    "name": "유니밸리CC",
+    "region": "고령군",
+    "imageFile": null,
+    "logoFile": "uni_valley_cc.png",
+    "location": null
+  },
+  {
+    "id": "ocean_beach_golf_resort",
+    "name": "오션비치골프리조트",
+    "region": "영덕군",
+    "imageFile": null,
+    "logoFile": "ocean_beach_golf_resort.png",
+    "location": null
+  },
+  {
+    "id": "hanmaek_cc",
+    "name": "한맥CC",
+    "region": "예천군",
+    "imageFile": null,
+    "logoFile": "hanmaek_cc.png",
+    "location": null
+  },
+  {
+    "id": "noblia_cc",
+    "name": "노블리아",
+    "region": "예천군",
+    "imageFile": null,
+    "logoFile": "noblia_cc.png",
+    "location": null
+  },
+  {
+    "id": "ms_club_uiseong",
+    "name": "엠스클럽 의성",
+    "region": "의성군",
+    "imageFile": null,
+    "logoFile": null,
+    "location": null
+  },
+  {
+    "id": "paragio_cc",
+    "name": "파라지오CC",
+    "region": "의성군",
+    "imageFile": null,
+    "logoFile": "paragio_cc.png",
+    "location": null
+  },
+  {
+    "id": "grace_cc",
+    "name": "그레이스CC",
+    "region": "청도군",
+    "imageFile": null,
+    "logoFile": "grace_cc.png",
+    "location": null
+  },
+  {
+    "id": "ocean_hills_cheongdo",
+    "name": "오션힐스청도",
+    "region": "청도군",
+    "imageFile": null,
+    "logoFile": "ocean_hills_cheongdo.png",
+    "location": null
+  },
+  {
+    "id": "seven_valley_cc",
+    "name": "세븐밸리CC",
+    "region": "칠곡군",
+    "imageFile": null,
+    "logoFile": "seven_valley_cc.png",
+    "location": null
+  },
+  {
+    "id": "pami_hills_cc",
+    "name": "파미힐스CC",
+    "region": "칠곡군",
+    "imageFile": null,
+    "logoFile": "pami_hills_cc.svg",
+    "location": null
+  },
+  {
+    "id": "gumi_midas",
+    "name": "구미마이다스",
+    "region": "칠곡군",
+    "imageFile": null,
+    "logoFile": "gumi_midas.png",
+    "location": null
   }
 ]

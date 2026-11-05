@@ -2,8 +2,20 @@
 <resources>
     <string name="app_name">골프 야드지</string>
 
-    <string name="course_list_title">골프장 선택</string>
+    <string name="course_list_title">코스 탐색</string>
     <string name="course_list_empty">등록된 골프장이 없습니다</string>
+    <string name="course_search_hint">골프장 이름 또는 지역 검색</string>
+    <string name="course_search_no_result">검색 결과가 없습니다</string>
+    <string name="filter_favorites">★ 즐겨찾기</string>
+    <string name="filter_nearby">📍 내 주변</string>
+    <string name="section_nearby_title">내 주변 골프장</string>
+    <string name="recent_play_label">최근 플레이</string>
+    <string name="recent_play_resume">다시 시작</string>
+    <string name="nearby_no_location">위치 정보가 있는 골프장이 아직 없어요</string>
+    <string name="favorites_empty">즐겨찾기한 골프장이 없어요</string>
+    <string name="hole_strategy_format">공략팁: %1$s</string>
+    <string name="hole_slope_format">그린 경사: %1$s</string>
+    <string name="hole_slope_none">정보 없음</string>
 
     <string name="label_front">앞</string>
     <string name="label_center">중앙</string>
@@ -15,9 +27,9 @@
     <string name="gps_waiting">GPS 신호 찾는 중…</string>
     <string name="gps_accuracy_format">정확도 ±%1$dm</string>
 
-    <string name="action_save_shot">현재 위치 샷 저장</string>
-    <string name="action_clear_shot">저장 위치 해제</string>
-    <string name="shot_saved_from">저장된 위치 기준</string>
+    <string name="action_record_shot_format">%1$d타 위치 기록</string>
+    <string name="shot_undo_message">마지막 샷 기록을 취소했어요</string>
+    <string name="shot_saved_from_format">%1$d타 지점 기준</string>
     <string name="live_gps_basis">현재 위치 기준</string>
 
     <string name="target_distance_format">목표 지점까지 %1$s%2$s</string>
@@ -47,4 +59,140 @@
     <string name="permission_needed_title">위치 권한이 필요해요</string>
     <string name="permission_needed_body">현재 위치 기반 남은 거리를 계산하려면 위치 권한을 허용해주세요</string>
     <string name="permission_grant">권한 허용</string>
+
+    <string name="course_preview_summary_format">%1$d홀 · 파 %2$d</string>
+    <string name="course_preview_map_placeholder">좌표 미입력 · 지도를 움직여 코스를 찾아보세요</string>
+    <string name="course_preview_hole_coord_done">좌표 입력됨</string>
+    <string name="course_preview_hole_coord_missing">좌표 미입력</string>
+    <string name="action_start_round">라운드 시작</string>
+
+    <string name="round_theme_section_title">라운드 화면 테마</string>
+    <string name="settings_title">설정</string>
+    <string name="settings_menu_theme_title">라운드 화면 테마</string>
+    <string name="settings_menu_theme_subtitle_format">현재: %1$s</string>
+    <string name="settings_menu_clubs_title">클럽별 평균 비거리</string>
+    <string name="settings_menu_clubs_subtitle">추천 클럽 계산에 사용돼요</string>
+    <string name="theme_settings_hint">라운드 화면(지도·거리 카드)의 색과 글꼴을 골라보세요</string>
+
+    <string name="nav_home">홈</string>
+    <string name="nav_explore">탐색</string>
+    <string name="nav_scorecard">스코어카드</string>
+    <string name="nav_notifications">알림</string>
+    <string name="nav_mypage">마이페이지</string>
+
+    <string name="home_greeting">오늘도 좋은 라운드 되세요 ⛳</string>
+    <string name="home_recent_play_title">최근 플레이</string>
+    <string name="home_recent_play_empty">아직 플레이한 코스가 없어요</string>
+    <string name="home_favorites_weather_title">즐겨찾기 골프장 날씨</string>
+    <string name="home_favorites_weather_empty">즐겨찾기한 골프장이 없어요</string>
+    <string name="home_go_explore">코스 탐색하러 가기</string>
+
+    <string name="mypage_title">마이페이지</string>
+    <string name="mypage_unit_title">거리 단위</string>
+    <string name="mypage_clubs_title">클럽별 평균 비거리</string>
+    <string name="mypage_favorites_title">즐겨찾기 골프장</string>
+    <string name="mypage_favorites_empty">즐겨찾기한 골프장이 없어요</string>
+    <string name="mypage_app_version_format">앱 버전 %1$s</string>
+
+    <string name="scorecard_title">스코어카드</string>
+    <string name="scorecard_empty">아직 저장된 라운드 기록이 없어요</string>
+    <string name="scorecard_total_format">총 %1$d타</string>
+    <string name="scorecard_date_course_format">%1$s · %2$s</string>
+    <string name="score_stroke_label">타수</string>
+
+    <string name="notifications_title">알림</string>
+    <string name="notifications_empty">새 알림이 없어요</string>
+    <string name="notification_weather_alert_format">%1$s에 %2$s 예보가 있어요</string>
+    <string name="weather_alert_rain">비</string>
+    <string name="weather_alert_wind">강풍</string>
+    <string name="activity_log_round_started_format">%1$s 라운드를 시작했어요</string>
+    <string name="activity_log_tee_registered_format">%1$s %2$d번 홀 티 좌표를 등록했어요</string>
+
+    <string name="rating_my_rating">내 별점</string>
+    <string name="rating_not_rated">별점을 매겨보세요</string>
+
+    <string name="action_end_round">종료</string>
+    <string name="end_round_confirm_title">라운드를 종료할까요?</string>
+    <string name="end_round_confirm_message">지금까지 입력한 타수는 스코어카드에 저장돼요</string>
+
+    <string name="action_import_qr">QR로 가져오기</string>
+    <string name="delete_round_confirm_title">기록을 삭제할까요?</string>
+    <string name="delete_round_confirm_message">%1$s · %2$s 기록을 삭제합니다</string>
+    <string name="qr_scan_cancelled">QR 스캔을 취소했어요</string>
+    <string name="qr_unrecognized_title">아직 인식할 수 없는 형식이에요</string>
+    <string name="qr_unrecognized_message">이 QR의 내용을 자동으로 스코어로 바꾸는 방법을 아직 몰라요. 아래 내용을 캡처해서 보내주시면 다음 업데이트 때 정확히 연동해드릴게요.\n\n%1$s</string>
+    <string name="qr_url_title">웹 링크 QR이에요</string>
+    <string name="qr_url_message">이 QR은 스코어 데이터가 아니라 웹페이지 링크예요. 아직 이 링크에서 자동으로 스코어를 가져오는 기능은 없어요.\n\n%1$s</string>
+    <string name="qr_open_link">링크 열기</string>
+    <string name="qr_imported_message">%1$s · 총 %2$d타 기록을 가져왔어요</string>
+    <string name="qr_scan_hint">QR 코드를 화면 안에 비춰주세요</string>
+    <string name="qr_camera_permission_needed">카메라 권한이 필요해요</string>
+
+    <string name="course_preview_yardage_format">전장 %1$dm</string>
+    <string name="course_preview_yardage_partial_format">전장 %1$dm(%2$d홀 기준)</string>
+    <string name="hole_yardage_format">%1$dm</string>
+    <string name="hole_hdcp_format">HDCP %1$d</string>
+    <string name="hole_green_size_format">그린 크기: %1$s</string>
+
+    <string name="stat_label_par">PAR</string>
+    <string name="stat_label_yardage">전장</string>
+    <string name="stat_label_hdcp">HDCP</string>
+    <string name="stat_value_none">–</string>
+
+    <string name="action_register_tee">티 좌표 등록</string>
+    <string name="action_register_tee_active">지도를 탭하세요</string>
+    <string name="register_tee_hint">%1$d번 홀 티박스 위치를 지도에서 탭하세요</string>
+    <string name="register_tee_saved">%1$d번 홀 티 좌표를 등록했어요</string>
+    <string name="register_tee_cleared">%1$d번 홀 티 좌표를 지웠어요</string>
+    <string name="register_tee_clear_confirm_title">티 좌표 지우기</string>
+    <string name="register_tee_clear_confirm_message">%1$d번 홀에 등록한 티 좌표를 지울까요?</string>
+
+    <string name="location_search_hint">골프장 이름·지역으로 위치 검색</string>
+    <string name="action_search_location">검색</string>
+    <string name="action_save_searched_location">이 위치를 코스 좌표로 저장</string>
+    <string name="location_search_not_found">검색 결과가 없어요</string>
+    <string name="location_search_moved">%1$s 위치로 지도를 이동했어요</string>
+    <string name="location_saved_as_course">코스 대표 좌표로 저장했어요</string>
+
+    <string name="action_course_management">전략 그리기</string>
+
+    <string name="round_corrected_distance_label">보정거리</string>
+    <string name="round_menu_gps">GPS</string>
+    <string name="map_type_satellite">위성</string>
+    <string name="map_type_normal">일반</string>
+    <string name="round_menu_score">스코어</string>
+    <string name="round_menu_memo">메모</string>
+    <string name="round_menu_help">도움말</string>
+    <string name="round_menu_strategy">홀공략</string>
+    <string name="round_menu_target">목표거리</string>
+    <string name="round_menu_pin">핀위치</string>
+    <string name="round_menu_lock">🔒</string>
+    <string name="round_menu_lock_on">🔓</string>
+    <string name="round_mode_shot_distance">비거리</string>
+    <string name="round_mode_remaining_distance">남은거리</string>
+    <string name="round_green_select_format">그린선택: %1$s</string>
+    <string name="round_green_pin">핀</string>
+    <string name="round_hole_picker_title">홀 선택</string>
+    <string name="round_target_cleared">목표 지점을 지웠어요</string>
+    <string name="round_pin_saved">%1$d번 홀 핀 위치를 현재 GPS로 저장했어요</string>
+    <string name="round_pin_needs_gps">GPS 신호를 기다리는 중이에요</string>
+    <string name="round_touch_locked">지도 터치가 잠겼어요</string>
+    <string name="round_touch_unlocked">지도 터치 잠금을 풀었어요</string>
+    <string name="round_help_message">GPS: 현재 위치로 지도를 다시 맞춰요\n스코어: 이번 홀 타수를 기록해요\n메모: 이 홀에 공략선·위험 표시를 그려요\n홀공략: 등록된 공략팁을 보여줘요\n목표거리: 지도를 탭해 목표 지점까지 거리를 재요(다시 누르면 지움)\n핀위치: 지금 서 있는 자리를 이 홀 핀 위치로 저장해요\n그린선택: 거리 계산 기준을 핀·앞·중앙·뒤 중에서 바꿔요\n🔒: 지도를 탭해도 목표 지점이 안 바뀌게 잠가요</string>
+    <string name="round_overflow_settings">클럽 거리 설정</string>
+    <string name="round_overflow_end">라운드 종료</string>
+    <string name="round_overflow_unit_format">단위 전환 (현재: %1$s)</string>
+    <string name="round_score_dialog_hint_format">%1$s · 길게 누르면 마지막 기록 취소</string>
+    <string name="round_badge_format">%1$s · %2$d홀</string>
+    <string name="round_detail_horizontal_format">수평 %1$s%2$s</string>
+    <string name="round_detail_elevation_format">높낮이 %1$s%2$sm</string>
+    <string name="round_detail_shot_hint">샷을 2번 이상 기록하면 방금 친 거리가 나와요</string>
+    <string name="round_detail_shot_format">%1$d번째 샷 비거리</string>
+    <string name="management_hole_title_format">%1$d번 홀 전략 캔버스</string>
+    <string name="management_clear">다시 그리기</string>
+    <string name="management_tool_draw">공략선</string>
+    <string name="management_tool_hazard">위험(X)</string>
+    <string name="management_guide_draw">화면을 드래그하여 티샷 공략 라인을 그려보세요</string>
+    <string name="management_guide_hazard">터치한 위치에 주의(X) 마크를 남깁니다</string>
+    <string name="management_explanation">• 공략선 모드: 터치·드래그로 티샷 낙하 지점 및 퍼팅 라인을 직접 그리세요.\n• 위험(X) 모드: 터치한 위치에 벙커나 해저드 경고 표시를 남길 수 있습니다.\n\n※ 배경 그림은 실제 이 홀의 정확한 지형이 아니라 메모용 참고 도안입니다.</string>
 </resources>

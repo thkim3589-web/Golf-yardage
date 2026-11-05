@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 앱 전체 통일 다크 테마 (라운드 화면) -->
+    <style name="Theme.GolfYardage.Round" parent="Theme.GolfYardage">
+        <item name="android:statusBarColor">#121212</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorRoundHeaderBg">#121212</item>
+        <item name="colorRoundHeaderText">#FFFFFF</item>
+        <item name="colorRoundHeaderTextDim">#888888</item>
+        <item name="colorRoundAccent">#FF6B35</item>
+        <item name="colorRoundOnAccent">#FFFFFF</item>
+        <item name="colorRoundMapBg">#222225</item>
+        <item name="colorRoundCardBg">#222225</item>
+        <item name="colorRoundCardHandle">#2D2D30</item>
+        <item name="colorRoundTextPrimary">#FFFFFF</item>
+        <item name="colorRoundTextSecondary">#888888</item>
+        <item name="colorRoundCenterLabel">#FF6B35</item>
+        <item name="colorRoundCenterNumber">#FFFFFF</item>
+        <item name="colorRoundBadgeBg">#222225</item>
+        <item name="colorRoundBadgeText">#FFFFFF</item>
+        <item name="colorRoundTargetBadgeBg">#FF6B35</item>
+        <item name="colorRoundTargetBadgeText">#FFFFFF</item>
+        <item name="colorRoundRecommendedBg">@android:color/transparent</item>
+        <item name="colorRoundRecommendedText">#FF6B35</item>
+        <item name="colorRoundButtonPrimaryBg">#FF6B35</item>
+        <item name="colorRoundButtonPrimaryText">#FFFFFF</item>
+        <item name="colorRoundButtonSecondaryBg">#222225</item>
+        <item name="colorRoundButtonSecondaryText">#FFFFFF</item>
+        <item name="colorRoundStrategyPanelBg">#222225</item>
+        <item name="colorRoundStrategyPanelText">#FFFFFF</item>
+        <item name="roundDisplayFontFamily">sans-serif-medium</item>
+    </style>
+
+</resources>

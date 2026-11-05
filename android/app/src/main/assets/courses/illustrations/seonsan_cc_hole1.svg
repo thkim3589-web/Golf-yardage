@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 460">
+  <defs>
+    <linearGradient id="greenSlope" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c7a46"/>
+      <stop offset="55%" stop-color="#7fae5c"/>
+      <stop offset="100%" stop-color="#8fc46a"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="300" height="460" fill="#14180f"/>
+
+  <!-- 러프 -->
+  <rect x="0" y="0" width="300" height="460" fill="#1c2617"/>
+
+  <!-- 페어웨이 (티에서 그린까지, 좌측 OB를 피해 완만히 우측으로) -->
+  <path d="M130,430 L170,430 C182,340 190,260 178,190 C170,140 150,95 150,70
+           L120,70 C118,100 132,150 128,190 C120,265 112,345 130,430 Z"
+        fill="#4b5d3a"/>
+
+  <!-- 페어웨이 중앙 예상 진행 라인 -->
+  <path d="M150,420 C158,330 162,250 152,190 C146,140 136,100 134,72"
+        stroke="#5c7047" stroke-width="10" fill="none" opacity="0.5"/>
+
+  <!-- 좌측 OB 라인 -->
+  <line x1="70" y1="440" x2="95" y2="60" stroke="#e0503c" stroke-width="3" stroke-dasharray="10,7"/>
+  <text x="58" y="250" fill="#e0503c" font-size="15" font-weight="700"
+        transform="rotate(-83 58 250)">OB</text>
+
+  <!-- 그린 (뒤 우측이 가장 높고 앞으로 내려가는 경사) -->
+  <ellipse cx="150" cy="62" rx="58" ry="38" fill="url(#greenSlope)" stroke="#3f5230" stroke-width="2"/>
+
+  <!-- 경사 방향 화살표 (뒤-우측 높은 지점 -> 앞으로) -->
+  <path d="M186,40 C170,58 158,66 148,84" stroke="#233318" stroke-width="3" fill="none"
+        stroke-linecap="round"/>
+  <path d="M148,84 l-7,-3 l3,8 l7,-3 z" fill="#233318"/>
+  <circle cx="186" cy="40" r="4" fill="#233318"/>
+
+  <!-- 핀 -->
+  <line x1="150" y1="62" x2="150" y2="34" stroke="#e6e6e6" stroke-width="2"/>
+  <path d="M150,34 L168,40 L150,46 Z" fill="#ff6b35"/>
+
+  <!-- 티 박스 -->
+  <rect x="138" y="424" width="24" height="10" rx="2" fill="#cfd9c6"/>
+
+  <!-- 거리 안내선 -->
+  <line x1="150" y1="420" x2="150" y2="72" stroke="#cfd9c6" stroke-width="1" stroke-dasharray="2,6" opacity="0.35"/>
+</svg>

@@ -15,8 +15,12 @@
         android:theme="@style/Theme.GolfYardage"
         android:supportsRtl="true">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${GOOGLE_MAPS_API_KEY}" />
+
         <activity
-            android:name=".ui.course.CourseListActivity"
+            android:name=".ui.main.MainTabActivity"
             android:exported="true"
             android:theme="@style/Theme.GolfYardage">
             <intent-filter>
@@ -24,6 +28,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.course.CoursePreviewActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GolfYardage" />
+
+        <activity
+            android:name=".ui.management.CourseManagementActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GolfYardage" />
 
         <activity
             android:name=".ui.round.MainActivity"
@@ -35,6 +49,7 @@
             android:name=".ui.settings.ClubSettingsActivity"
             android:exported="false"
             android:theme="@style/Theme.GolfYardage" />
+
 
         <activity
             android:name=".ui.crash.CrashActivity"

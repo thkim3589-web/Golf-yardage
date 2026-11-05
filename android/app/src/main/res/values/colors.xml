@@ -14,4 +14,14 @@
     <color name="divider">#E1E8E1</color>
     <color name="gps_accuracy_fill">#334C8C4A</color>
     <color name="gps_accuracy_stroke">#4C8C4A</color>
+    <color name="status_coord_missing">#C7CFC7</color>
+
+    <!-- 앱 전체 통일 다크 테마 -->
+    <color name="explore_bg">#121212</color>
+    <color name="explore_surface">#222225</color>
+    <color name="explore_surface_alt">#222225</color>
+    <color name="explore_border">#2D2D30</color>
+    <color name="explore_text_primary">#FFFFFF</color>
+    <color name="explore_text_secondary">#888888</color>
+    <color name="explore_accent">#FF6B35</color>
 </resources>

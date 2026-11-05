@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorRoundHeaderBg" format="color" />
+    <attr name="colorRoundHeaderText" format="color" />
+    <attr name="colorRoundHeaderTextDim" format="color" />
+    <attr name="colorRoundAccent" format="color" />
+    <attr name="colorRoundOnAccent" format="color" />
+    <attr name="colorRoundMapBg" format="color" />
+    <attr name="colorRoundCardBg" format="color" />
+    <attr name="colorRoundCardHandle" format="color" />
+    <attr name="colorRoundTextPrimary" format="color" />
+    <attr name="colorRoundTextSecondary" format="color" />
+    <attr name="colorRoundCenterLabel" format="color" />
+    <attr name="colorRoundCenterNumber" format="color" />
+    <attr name="colorRoundBadgeBg" format="color" />
+    <attr name="colorRoundBadgeText" format="color" />
+    <attr name="colorRoundTargetBadgeBg" format="color" />
+    <attr name="colorRoundTargetBadgeText" format="color" />
+    <attr name="colorRoundRecommendedBg" format="color" />
+    <attr name="colorRoundRecommendedText" format="color" />
+    <attr name="colorRoundButtonPrimaryBg" format="color" />
+    <attr name="colorRoundButtonPrimaryText" format="color" />
+    <attr name="colorRoundButtonSecondaryBg" format="color" />
+    <attr name="colorRoundButtonSecondaryText" format="color" />
+    <attr name="colorRoundStrategyPanelBg" format="color" />
+    <attr name="colorRoundStrategyPanelText" format="color" />
+    <attr name="roundDisplayFontFamily" format="string" />
+</resources>

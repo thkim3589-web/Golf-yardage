@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="70.833" height="35.184" viewBox="0 0 70.833 35.184">
+    <defs>
+        <clipPath id="enlft880na">
+            <path data-name="사각형 13" style="fill:#fff" d="M0 0h70.833v35.184H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 16" style="clip-path:url(#enlft880na)">
+        <path data-name="패스 21" d="M38 5.108h11.5a2.075 2.075 0 0 0-1.917-2.332 6.01 6.01 0 0 0-1.058.022S38.83 4.723 38 5.108" transform="translate(-17.863 -1.298)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 22" d="m21.472 12.343 4.3-2.136h15.416l-.818 2.136z" transform="translate(-10.093 -4.798)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 23" d="m13.632 17.42-2.727 2.094H33.83l.881-2.115z" transform="translate(-5.126 -8.179)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 24" d="M5.916 24.613s-1.279 1.445-1.7 2.094H29.05l.86-2.115z" transform="translate(-1.982 -11.559)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 25" d="M1.452 31.824a20.17 20.17 0 0 0-.8 2.136h25.277l.86-2.136z" transform="translate(-.308 -14.959)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 26" d="M.012 39.055a10.346 10.346 0 0 0 .1 2.094l23.931.042.881-2.136z" transform="translate(0 -18.358)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 27" d="m1.011 46.168 22.9.021-.839 2.136H2.123a18.156 18.156 0 0 1-1.112-2.157" transform="translate(-.475 -21.701)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 28" d="m5.9 53.363 18.73-.021-.881 2.136L8.5 55.5a19.386 19.386 0 0 1-2.622-2.178" transform="translate(-2.763 -25.063)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 29" d="M17.04 60.553h11.221s-.881 2.366-1.8 2.639c0 0-8.075-1.613-9.417-2.639" transform="translate(-8.009 -28.462)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 30" d="M76.009 6.828c-1.5-3.36-7.056-3.305-7.056-3.305A3.006 3.006 0 0 0 65.812 5.7L59 21.88l4.214.142c3.366.113 7.523-2.881 7.523-2.881 2.885-1.977 4.469-5.988 4.469-5.988 2.009-4.1.848-6.241.848-6.241z" transform="translate(-27.73 -1.656)" style="fill-rule:evenodd;fill:#fff"/>
+        <path data-name="패스 31" d="M69.668 0s7.23.948 8.241 4.924a13.38 13.38 0 0 1-1.746 9.576 15.862 15.862 0 0 1-11.121 7.586 18.513 18.513 0 0 1-4.6.459l-6.459-.245-3.921 10.063s-1.072 2.537 2.451 2.814c0 0 10.447.183 14.827-1.315a61.131 61.131 0 0 0 10.875-3.4s7.685-2.81 12.468-8.162c0 0 5.025-4.589 3.217-10.737 0 0-.858-4.436-8.639-8.259 0 0-5.821-2.845-15.593-3.3" transform="translate(-23.459)" style="fill-rule:evenodd;fill:#fff"/>
+    </g>
+</svg>

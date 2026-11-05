@@ -4,24 +4,46 @@
         <item name="android:background">@drawable/bg_badge</item>
         <item name="android:paddingHorizontal">10dp</item>
         <item name="android:paddingVertical">5dp</item>
-        <item name="android:textColor">@color/text_on_green</item>
         <item name="android:textSize">12sp</item>
     </style>
 
     <style name="DistanceLabel">
-        <item name="android:textColor">@color/text_on_green_dim</item>
         <item name="android:textSize">13sp</item>
     </style>
 
     <style name="DistanceValue">
-        <item name="android:textColor">@color/text_on_green</item>
         <item name="android:textSize">34sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="DistanceValueLarge">
-        <item name="android:textColor">@color/text_on_green</item>
         <item name="android:textSize">52sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FloatingCircleButton">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:background">@drawable/bg_floating_circle</item>
+        <item name="android:backgroundTint">?attr/colorRoundBadgeBg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">?attr/colorRoundHeaderText</item>
+        <item name="android:textSize">9.5sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="FloatingPillButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">96dp</item>
+        <item name="android:background">@drawable/bg_floating_pill</item>
+        <item name="android:backgroundTint">?attr/colorRoundBadgeBg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:textColor">?attr/colorRoundHeaderText</item>
+        <item name="android:textSize">12.5sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 </resources>

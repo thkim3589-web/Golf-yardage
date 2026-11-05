@@ -1,0 +1,29 @@
+{
+  "id": "golfzone_gumi",
+  "name": "골프존카운티 구미",
+  "region": "구미시",
+  "imageFile": null,
+  "logoFile": "golfzone_gumi.png",
+  "_note": "location은 공개 지도 데이터로 확인한 코스 대표 좌표(선산과 같은 단지 내 클럽하우스 부근 근사치)입니다. par/yardageMeters(백티 기준)/hdcp/strategyTip은 golfzoncounty.com 공식 코스소개 페이지에서 가져온 실제 값입니다. 홀별 GPS 좌표는 아직 미입력 상태입니다.",
+  "location": { "lat": 36.1573388, "lng": 128.4508808 },
+  "holes": [
+    { "number": 1, "par": 5, "yardageMeters": 380, "hdcp": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "파5 롱홀로 좌우 오비가 있음. 200m 이상 티샷 필요" },
+    { "number": 2, "par": 4, "yardageMeters": 320, "hdcp": 7, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "좌도그렉 내리막 홀. 티샷 정확성 중요" },
+    { "number": 3, "par": 3, "yardageMeters": 130, "hdcp": 3, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "그린 뒤 내리막이므로 넘기지 않는 것이 유리" },
+    { "number": 4, "par": 5, "yardageMeters": 440, "hdcp": 2, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "해저드 통과 후 페어웨이 폭 좁음. 도전적 플레이 권장" },
+    { "number": 5, "par": 4, "yardageMeters": 292, "hdcp": 5, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "페널티 구역 회피 전략 필요. 짧은 클럽 사용 권장" },
+    { "number": 6, "par": 3, "yardageMeters": 90, "hdcp": 9, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "내리막 숏홀. 바람 영향 큼. 거리 정확성이 중요" },
+    { "number": 7, "par": 4, "yardageMeters": 265, "hdcp": 6, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "오르막 포대 그린. 앞 깊은 벙커 주의" },
+    { "number": 8, "par": 5, "yardageMeters": 400, "hdcp": 1, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "내리막 오른쪽 굽은 홀. 티샷 정교함 필수" },
+    { "number": 9, "par": 3, "yardageMeters": 130, "hdcp": 8, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "블라인드 해저드 숏홀. 바람 읽기가 핵심" },
+    { "number": 10, "par": 4, "yardageMeters": 280, "hdcp": 5, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "완만한 오르막이나 티박스 함정 있음" },
+    { "number": 11, "par": 3, "yardageMeters": 125, "hdcp": 8, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "짧게 보이는 홀. 클럽 선택 확신 필요" },
+    { "number": 12, "par": 5, "yardageMeters": 450, "hdcp": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "시야 확보 좋은 홀. 무난한 플레이 가능" },
+    { "number": 13, "par": 3, "yardageMeters": 90, "hdcp": 9, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "짧은 파3. 그린 선택에 따라 클럽 차이 큼" },
+    { "number": 14, "par": 4, "yardageMeters": 270, "hdcp": 6, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "페널티 구역 거리 정확도 중요" },
+    { "number": 15, "par": 3, "yardageMeters": 90, "hdcp": 7, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "포대 그린 숏홀. 정확한 온그린 목표" },
+    { "number": 16, "par": 5, "yardageMeters": 410, "hdcp": 3, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "티샷 구간 좁음. 오른쪽 나무가 그린 공략 방해" },
+    { "number": 17, "par": 4, "yardageMeters": 280, "hdcp": 1, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "블라인드 홀. 코스 중앙 피하고 한쪽으로 공략" },
+    { "number": 18, "par": 5, "yardageMeters": 440, "hdcp": 2, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "IP 지점 좁고 오른쪽 페널티 길게 뻗어있음" }
+  ]
+}

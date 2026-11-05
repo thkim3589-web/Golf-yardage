@@ -1,0 +1,29 @@
+{
+  "id": "golfzone_gampo",
+  "name": "골프존카운티 감포",
+  "region": "경주시",
+  "imageFile": null,
+  "logoFile": "golfzone_gampo.png",
+  "_note": "location은 감포읍 나정리 부근 근사 좌표입니다. par/yardageMeters(가장 긴 티 기준)/hdcp/strategyTip은 golfzoncounty.com 공식 코스소개 페이지에서 자동 추출한 값이라, HDCP 등 일부 수치는 실제와 다를 수 있어 확인이 필요합니다. 홀별 GPS 좌표는 아직 미입력 상태입니다.",
+  "location": { "lat": 35.7779446, "lng": 129.4935870 },
+  "holes": [
+    { "number": 1, "par": 4, "yardageMeters": 347, "hdcp": 8, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "좌측 슬라이스 홀이므로 좌측 소나무를 보고 공략" },
+    { "number": 2, "par": 4, "yardageMeters": 358, "hdcp": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "240M지점 실계천 있으니 장타자는 감안해서 공략" },
+    { "number": 3, "par": 4, "yardageMeters": 379, "hdcp": 1, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "정면 가장 멀리있는 라이트를 보고 공략" },
+    { "number": 4, "par": 3, "yardageMeters": 142, "hdcp": 9, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "바다에서 불어오는 훅바람에 주의" },
+    { "number": 5, "par": 4, "yardageMeters": 298, "hdcp": 7, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "좌측 180M 해저드 조심, 아이언 티샷 고려" },
+    { "number": 6, "par": 5, "yardageMeters": 518, "hdcp": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "우측 언덕경사 있으므로 우측 카트도로 공략" },
+    { "number": 7, "par": 3, "yardageMeters": 190, "hdcp": 2, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "그린이 좌측에서 우측으로 흐르는 것 감안" },
+    { "number": 8, "par": 4, "yardageMeters": 333, "hdcp": 6, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "우측 공간 없어 좌측 카트도로 공략" },
+    { "number": 9, "par": 5, "yardageMeters": 590, "hdcp": 1, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "골프장 지정 롱기스트 홀, 우측 도그렉" },
+    { "number": 10, "par": 5, "yardageMeters": 537, "hdcp": 2, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "좌측으로 90도 꺾이는 드로그렉홀" },
+    { "number": 11, "par": 4, "yardageMeters": 397, "hdcp": 3, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "정면 직선코스 블라인드 홀" },
+    { "number": 12, "par": 4, "yardageMeters": 311, "hdcp": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "비교적 짧고 넓은 슬라이스 홀" },
+    { "number": 13, "par": 3, "yardageMeters": 162, "hdcp": 4, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "골프장 지정 니어리스트 홀" },
+    { "number": 14, "par": 5, "yardageMeters": 453, "hdcp": 5, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "비교적 짧은 롱홀이며 슬라이스홀" },
+    { "number": 15, "par": 4, "yardageMeters": 376, "hdcp": 7, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "정면 우측그린을 보고 공략" },
+    { "number": 16, "par": 3, "yardageMeters": 163, "hdcp": 6, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "티잉그라운드에서 바다가 한눈에 보임" },
+    { "number": 17, "par": 4, "yardageMeters": 327, "hdcp": 8, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "정면 벙커를 조심" },
+    { "number": 18, "par": 4, "yardageMeters": 402, "hdcp": 1, "tee": null, "greenFront": null, "greenCenter": null, "greenBack": null, "pin": null, "greenBoundary": [], "slope": null, "strategyTip": "전장이 긴 까다로운 핸디캡 1번홀" }
+  ]
+}

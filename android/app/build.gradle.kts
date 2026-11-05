@@ -5,6 +5,8 @@ val localProps = Properties().apply {
     if (f.exists()) f.inputStream().use { load(it) }
 }
 val kakaoNativeAppKey: String = localProps.getProperty("KAKAO_NATIVE_APP_KEY", "")
+val kakaoRestApiKey: String = localProps.getProperty("KAKAO_REST_API_KEY", "")
+val googleMapsApiKey: String = localProps.getProperty("GOOGLE_MAPS_API_KEY", "")
 
 plugins {
     id("com.android.application")
@@ -23,6 +25,9 @@ android {
         versionName = "0.1.0"
 
         buildConfigField("String", "KAKAO_NATIVE_APP_KEY", "\"$kakaoNativeAppKey\"")
+        buildConfigField("String", "KAKAO_REST_API_KEY", "\"$kakaoRestApiKey\"")
+
+        manifestPlaceholders["GOOGLE_MAPS_API_KEY"] = googleMapsApiKey
 
         ndk {
             abiFilters += listOf("arm64-v8a")
@@ -61,12 +66,14 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
 
     implementation("com.google.android.gms:play-services-location:21.3.0")
-
-    implementation("com.kakao.maps.open:android:2.15.1")
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
 
     implementation("io.coil-kt:coil:2.6.0")
+    implementation("io.coil-kt:coil-svg:2.6.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+
+    implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

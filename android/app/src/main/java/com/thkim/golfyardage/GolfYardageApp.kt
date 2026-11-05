@@ -3,11 +3,20 @@ package com.thkim.golfyardage
 import android.app.Application
 import android.content.Intent
 import android.util.Log
-import com.kakao.vectormap.KakaoMapSdk
+import coil.ImageLoader
+import coil.ImageLoaderFactory
+import coil.decode.SvgDecoder
 import com.thkim.golfyardage.ui.crash.CrashActivity
 import kotlin.system.exitProcess
 
-class GolfYardageApp : Application() {
+class GolfYardageApp : Application(), ImageLoaderFactory {
+    override fun newImageLoader(): ImageLoader {
+        // 골프장 로고 중 SVG 벡터 파일(assets/courses/logos/*.svg)을 디코딩하기 위한 설정
+        return ImageLoader.Builder(this)
+            .components { add(SvgDecoder.Factory()) }
+            .build()
+    }
+
     override fun onCreate() {
         super.onCreate()
 
@@ -24,12 +33,6 @@ class GolfYardageApp : Application() {
             }
             android.os.Process.killProcess(android.os.Process.myPid())
             exitProcess(10)
-        }
-
-        try {
-            KakaoMapSdk.init(this, BuildConfig.KAKAO_NATIVE_APP_KEY)
-        } catch (e: Exception) {
-            Log.e("GolfYardageApp", "Kakao Maps SDK 초기화 실패", e)
         }
     }
 }
